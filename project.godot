@@ -14,10 +14,6 @@ config/name="Metroidicania Jam"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Art/icon.svg"
 
-[display]
-
-window/stretch/scale=3.0
-
 [dotnet]
 
 project/assembly_name="Metroidicania Jam"
