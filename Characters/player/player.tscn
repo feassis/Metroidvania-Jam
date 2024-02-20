@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dqgj0sh3fbkf2" path="res://placeholder assets/Girl-Sheet.png" id="2_1aov1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjfri"]
-radius = 5.0
-height = 16.0
+radius = 4.0
+height = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_637nr"]
 atlas = ExtResource("2_1aov1")
@@ -364,14 +364,17 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager")]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_0260g")
 speed = 200.0
 animManager = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_tjfri")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_3nm1m")
 animation = &"death"
