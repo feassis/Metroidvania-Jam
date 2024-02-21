@@ -1,7 +1,8 @@
-[gd_scene load_steps=49 format=3 uid="uid://8tjmltbshbhp"]
+[gd_scene load_steps=50 format=3 uid="uid://8tjmltbshbhp"]
 
 [ext_resource type="Script" path="res://Characters/player/Player.gd" id="1_0260g"]
 [ext_resource type="Texture2D" uid="uid://dqgj0sh3fbkf2" path="res://placeholder assets/Girl-Sheet.png" id="2_1aov1"]
+[ext_resource type="Script" path="res://Characters/player/Health.gd" id="3_xq40h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjfri"]
 radius = 4.0
@@ -363,12 +364,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health")]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_0260g")
 speed = 200.0
 animManager = NodePath("AnimatedSprite2D")
+health = NodePath("Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -378,3 +380,6 @@ shape = SubResource("CapsuleShape2D_tjfri")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_3nm1m")
 animation = &"death"
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("3_xq40h")
