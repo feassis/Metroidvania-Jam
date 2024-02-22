@@ -1,7 +1,10 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed:float = 300.0
 @export var animManager : AnimatedSprite2D
+@export var initialMaxHP: int = 5
+@export var health: Health
 
 var currentMovement: MoveDir= MoveDir.Down
 
@@ -12,6 +15,9 @@ func _physics_process(delta):
 	PlayerMovement(delta)
 	
 	
+func SubscribeHealthUI(ui : HealthUI):
+	health.SubscribeUI(ui)
+
 func PlayerMovement(delta: float):
 	var direction = HandleMovementDirection()
 	
@@ -26,13 +32,13 @@ func PlayAnimMove(direction: Vector2):
 	if direction == Vector2(0,0):
 		match currentMovement:
 			MoveDir.Up:
-				animManager.play("back move")
+				animManager.play("back walk")
 			MoveDir.Down:
-				animManager.play("front move")
+				animManager.play("front walk")
 			MoveDir.Left:
-				animManager.play("left move")
+				animManager.play("left walk")
 			MoveDir.Right:
-				animManager.play("right move")
+				animManager.play("right walk")
 	else:
 		match currentMovement:
 			MoveDir.Up:
