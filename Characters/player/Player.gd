@@ -26,16 +26,6 @@ func PlayAnimMove(direction: Vector2):
 	if direction == Vector2(0,0):
 		match currentMovement:
 			MoveDir.Up:
-				animManager.play("back move")
-			MoveDir.Down:
-				animManager.play("front move")
-			MoveDir.Left:
-				animManager.play("left move")
-			MoveDir.Right:
-				animManager.play("right move")
-	else:
-		match currentMovement:
-			MoveDir.Up:
 				animManager.play("back idle")
 			MoveDir.Down:
 				animManager.play("front idle")
@@ -43,6 +33,16 @@ func PlayAnimMove(direction: Vector2):
 				animManager.play("left idle")
 			MoveDir.Right:
 				animManager.play("right idle")
+	else:
+		match currentMovement:
+			MoveDir.Up:
+				animManager.play("back move")
+			MoveDir.Down:
+				animManager.play("front move")
+			MoveDir.Left:
+				animManager.play("left move")
+			MoveDir.Right:
+				animManager.play("right move")
 
 func HandleMovementDirection() -> Vector2:
 	var direction = Vector2(0,0)
