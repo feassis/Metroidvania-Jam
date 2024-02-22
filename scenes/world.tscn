@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=6 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
 [ext_resource type="PackedScene" uid="uid://fd12erxypbi6" path="res://UI/Health/healthUI.tscn" id="4_fclxh"]
+[ext_resource type="PackedScene" uid="uid://huv2pwg1c7an" path="res://Pick Ups/health_pickup.tscn" id="5_2quqk"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/player/player.tscn" id="10_ulmfq"]
 
 [node name="World" type="Node2D"]
@@ -23,3 +24,6 @@ script = ExtResource("3_lb5xp")
 [node name="HealthUI" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_fclxh")]
 layout_mode = 1
 player = NodePath("../../Player")
+
+[node name="HealthPickup" parent="." instance=ExtResource("5_2quqk")]
+position = Vector2(179, 149)

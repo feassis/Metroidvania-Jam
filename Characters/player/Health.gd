@@ -21,7 +21,7 @@ func TakeDamage(dmg : int):
 	healthUI.UpdateHP(currentHP)
 	
 func Heal(amount : int):
-	currentHP = clamp(currentHP - amount, 0, maxHP)
+	currentHP = clamp(currentHP + amount, 0, maxHP)
 	healthUI.UpdateHP(currentHP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
