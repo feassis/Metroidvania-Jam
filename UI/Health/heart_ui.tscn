@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://xst15a2cihbq"]
 
-[ext_resource type="Texture2D" uid="uid://brw0f00m8gcu" path="res://placeholder assets/Hearts/PNG/basic/background.png" id="1_8ra3k"]
-[ext_resource type="Texture2D" uid="uid://bwqk1vvu6hiec" path="res://placeholder assets/Hearts/PNG/basic/border.png" id="2_1m5wk"]
+[ext_resource type="Texture2D" uid="uid://brw0f00m8gcu" path="res://Placeholder Assets/Hearts/PNG/basic/background.png" id="1_8ra3k"]
+[ext_resource type="Texture2D" uid="uid://bwqk1vvu6hiec" path="res://Placeholder Assets/Hearts/PNG/basic/border.png" id="2_1m5wk"]
 [ext_resource type="Script" path="res://UI/Health/heart_ui.gd" id="2_m4twy"]
-[ext_resource type="Texture2D" uid="uid://dip581i0kjf4u" path="res://placeholder assets/Hearts/PNG/basic/heart.png" id="3_rhpgd"]
+[ext_resource type="Texture2D" uid="uid://dip581i0kjf4u" path="res://Placeholder Assets/Hearts/PNG/basic/heart.png" id="3_rhpgd"]
 
 [node name="HeartUI" type="TextureRect" node_paths=PackedStringArray("heartFill")]
 custom_minimum_size = Vector2(25, 25)

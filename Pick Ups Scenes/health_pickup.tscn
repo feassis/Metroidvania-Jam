@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://huv2pwg1c7an"]
 
-[ext_resource type="PackedScene" uid="uid://c80qqi34khbgw" path="res://Pick Ups/pick_up_base.tscn" id="1_7k81k"]
-[ext_resource type="Script" path="res://Pick Ups/health_pickup.gd" id="2_qdvjt"]
+[ext_resource type="PackedScene" uid="uid://c80qqi34khbgw" path="res://Pick Ups Scenes/pick_up_base.tscn" id="1_7k81k"]
+[ext_resource type="Script" path="res://Pick Ups Scenes/health_pickup.gd" id="2_qdvjt"]
 
 [node name="HealthPickup" instance=ExtResource("1_7k81k")]
 script = ExtResource("2_qdvjt")

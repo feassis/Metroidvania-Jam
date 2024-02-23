@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
 [ext_resource type="PackedScene" uid="uid://fd12erxypbi6" path="res://UI/Health/healthUI.tscn" id="4_fclxh"]
-[ext_resource type="PackedScene" uid="uid://huv2pwg1c7an" path="res://Pick Ups/health_pickup.tscn" id="5_2quqk"]
-[ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/player/player.tscn" id="10_ulmfq"]
+[ext_resource type="PackedScene" uid="uid://huv2pwg1c7an" path="res://Pick Ups Scenes/health_pickup.tscn" id="5_2quqk"]
+[ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
