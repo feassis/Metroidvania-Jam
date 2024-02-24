@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cref6v5e7jyk"
-path="res://.godot/imported/TX Tileset Stone Ground.png-ce919c68946a0145df9caccd6b4615d9.ctex"
+uid="uid://crnfubefaipcf"
+path="res://.godot/imported/Pulse.png-03bedcfd0d7c4889dfc9f687d1a31984.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Placeholder Assets/Pixel Art Top Down - Basic/Texture/TX Tileset Stone Ground.png"
-dest_files=["res://.godot/imported/TX Tileset Stone Ground.png-ce919c68946a0145df9caccd6b4615d9.ctex"]
+source_file="res://Art/Abilities and Attacks/Pulse.png"
+dest_files=["res://.godot/imported/Pulse.png-03bedcfd0d7c4889dfc9f687d1a31984.ctex"]
 
 [params]
 
