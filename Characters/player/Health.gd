@@ -17,12 +17,16 @@ func SubscribeUI(ui: HealthUI):
 	healthUI.Setup(currentHP, maxHP)
 
 func TakeDamage(dmg : int):
+	self.get_parent().PlayDamageAnim()
 	currentHP = clamp(currentHP - dmg, 0, maxHP)
 	healthUI.UpdateHP(currentHP)
 	
 func Heal(amount : int):
 	currentHP = clamp(currentHP + amount, 0, maxHP)
 	healthUI.UpdateHP(currentHP)
+	
+func Kill():
+	TakeDamage(currentHP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
