@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
 [ext_resource type="PackedScene" uid="uid://fd12erxypbi6" path="res://UI/Health/healthUI.tscn" id="4_fclxh"]
-[ext_resource type="PackedScene" uid="uid://huv2pwg1c7an" path="res://Pick Ups/health_pickup.tscn" id="5_2quqk"]
+[ext_resource type="PackedScene" uid="uid://huv2pwg1c7an" path="res://Pick Ups Scenes/health_pickup.tscn" id="5_2quqk"]
 [ext_resource type="PackedScene" uid="uid://ca0k546chyga6" path="res://Characters/enemy/Golem 1/golem_1.tscn" id="6_vrq5a"]
-[ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/player/player.tscn" id="10_ulmfq"]
+[ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
 vertices = PackedVector2Array(170, 263, 201, 246, 748, 130, 746, 423, 243, 338, 443, 557, 243, 384, 134, 246, 73, 263, 38, 515, 186, 387, 165, 325, 186, 335, -71, 333, 65, 324, 693, -52, 197, 170, 304, -78, 81, -57, 139, 171, 27, 10, 102, 174, 39, 170, 40, 245, 98, 245)
