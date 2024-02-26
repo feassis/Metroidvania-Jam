@@ -62,6 +62,21 @@ func Kill() -> bool:
 		return false
 	health.Kill()
 	return true
+	
+func HalfLife():
+	health.HalfLife()
+
+func GetFacingVector() -> Vector2:
+	match currentMovement:
+		MoveDir.Up:
+			return Vector2(0, -1)
+		MoveDir.Down:
+			return Vector2(0, 1)
+		MoveDir.Left:
+			return Vector2(-1, 0)
+		MoveDir.Right:
+			return Vector2(1, 0)
+	return Vector2(0,0)
 
 func PlayDamageAnim():
 	isTakingDamage = true

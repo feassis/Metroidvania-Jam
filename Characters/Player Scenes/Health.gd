@@ -27,6 +27,9 @@ func Heal(amount : int):
 	
 func Kill():
 	TakeDamage(currentHP)
+	
+func HalfLife():
+	TakeDamage(max(currentHP/2, 1))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
