@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3hlhaqtubtig"]
+
+[sub_resource type="GDScript" id="GDScript_gws6d"]
+resource_name = "Golem2"
+script/source = "extends Enemy
+"
+
+[node name="Golem 2" type="CharacterBody2D"]
+script = SubResource("GDScript_gws6d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
