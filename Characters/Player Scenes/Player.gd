@@ -62,6 +62,9 @@ func Kill() -> bool:
 		return false
 	health.Kill()
 	return true
+	
+func HalfLife():
+	health.HalfLife()
 
 func GetFacingVector() -> Vector2:
 	match currentMovement:

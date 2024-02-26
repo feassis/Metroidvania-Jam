@@ -330,7 +330,7 @@ animations = [{
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k0vpg"]
-radius = 138.051
+radius = 252.071
 
 [node name="Golem 1" type="CharacterBody2D" node_paths=PackedStringArray("agent", "animationManager")]
 z_index = 1

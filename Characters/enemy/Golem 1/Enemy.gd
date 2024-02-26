@@ -33,8 +33,7 @@ func _process(delta):
 	var newVel = (nextLoc - curLoc).normalized() * speed
 	velocity = newVel
 	setMovementDirection(velocity)
-	
-	
+
 	move_and_slide()
 
 func animateWalk(vel: Vector2):
@@ -84,13 +83,11 @@ func onContactTarget():
 func GetDevoured():
 	wasDevoured = true
 	self.queue_free()
-	
 
 func _on_detection_area_body_entered(body):
 	print(body.name)
 	if body is Player:
 		target = (body as Player)
-
 
 func _on_detection_area_body_exited(body):
 	if body == target:
