@@ -206,6 +206,10 @@ func ProcessDeath():
 		isTakingDamage = false
 		isDead = false
 		lifeUI.UpdateLife(currentLife)
+		
+func GainLife(amount: int):
+	currentLife += amount
+	lifeUI.UpdateLife(currentLife)
 
 func _on_animated_sprite_2d_animation_finished():
 	var animName = animManager.get_animation()

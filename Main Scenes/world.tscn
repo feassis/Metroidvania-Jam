@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=11 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ca0k546chyga6" path="res://Characters/enemy/Golem 1/golem_1.tscn" id="6_vrq5a"]
 [ext_resource type="PackedScene" uid="uid://3hlhaqtubtig" path="res://Characters/enemy/Golem 2/golem_2.tscn" id="7_f31sn"]
 [ext_resource type="PackedScene" uid="uid://fuu4wtvork38" path="res://UI/Life/LifeUI.tscn" id="7_trhml"]
+[ext_resource type="PackedScene" uid="uid://dsy253qu08cyr" path="res://Pick Ups Scenes/extra_unit_pick_up.tscn" id="9_3megw"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
@@ -58,3 +59,9 @@ player = NodePath("../../Player")
 
 [node name="Golem 2" parent="." instance=ExtResource("7_f31sn")]
 position = Vector2(587, 222)
+
+[node name="Extra Unit Pick UP" parent="." instance=ExtResource("9_3megw")]
+position = Vector2(128, 58)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("5_2quqk")]
+position = Vector2(226, 39)
