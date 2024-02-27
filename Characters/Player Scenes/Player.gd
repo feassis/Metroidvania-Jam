@@ -6,10 +6,12 @@ class_name Player
 @export var dashVelocity: float = 500.0
 @export var animManager : AnimatedSprite2D
 @export var initialMaxHP: int = 5
+@export var initialLifeAmount: int = 3
 @export var health: Health
 @export var devourFrameDelay: int = 8
 @export var timer : Timer
 
+@export_category("Devour Detection")
 @export var UpDetection : DevourDetection
 @export var DownDetection : DevourDetection
 @export var RightDetection : DevourDetection
@@ -18,16 +20,24 @@ class_name Player
 var isDevouring : bool = false
 var isTakingDamage: bool = false
 
+var currentLife : int
+var lifeUI: LifeUI
+
+
 var currentMovement: MoveDir= MoveDir.Down
+var startPos
+var isDead: bool= false
+
 
 func _ready():
 	PlayAnimMove(Vector2(0,0))
+	startPos = position
 	
 func IsInvulnerable() -> bool:
-	return isDevouring || isTakingDamage
+	return isDevouring || isTakingDamage || isDead
 
 func _physics_process(delta):
-	if isDevouring || isTakingDamage:
+	if isDevouring || isTakingDamage || isDead:
 		return
 	
 	PlayerMovement(delta)
@@ -37,6 +47,11 @@ func _physics_process(delta):
 	
 func SubscribeHealthUI(ui : HealthUI):
 	health.SubscribeUI(ui)
+	
+func SubscribeLifeUI(ui : LifeUI):
+	lifeUI = ui
+	currentLife = initialLifeAmount
+	lifeUI.UpdateLife(currentLife)
 
 func GetSpeed() -> float:
 	if Input.is_action_just_pressed("sprint"):
@@ -169,6 +184,29 @@ func ControlCurrentMoveDirection(direction: Vector2):
 
 enum MoveDir {Left, Right, Up, Down}
 
+func PlayDeathAnimation():
+	isDead = true
+	match currentMovement:
+		MoveDir.Up:
+			animManager.play("death up")
+		MoveDir.Down:
+			animManager.play("death down")
+		MoveDir.Left:
+			animManager.play("death left")
+		MoveDir.Right:
+			animManager.play("death right")
+
+func ProcessDeath():
+	if currentLife <= 0:
+		print("Game Over")
+	else:
+		currentLife = clamp(currentLife - 1, 0, 99999)
+		position = startPos
+		health.HealMaxAmount()
+		isTakingDamage = false
+		isDead = false
+		lifeUI.UpdateLife(currentLife)
+
 func _on_animated_sprite_2d_animation_finished():
 	var animName = animManager.get_animation()
 	
@@ -189,3 +227,11 @@ func _on_animated_sprite_2d_animation_finished():
 			isTakingDamage = false
 		"damage right":
 			isTakingDamage = false
+		"death up":
+			ProcessDeath()
+		"death down":
+			ProcessDeath()
+		"death right":
+			ProcessDeath()
+		"death left":
+			ProcessDeath()

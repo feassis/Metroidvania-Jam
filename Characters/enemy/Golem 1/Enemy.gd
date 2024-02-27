@@ -75,7 +75,7 @@ func setMovementDirection(vel: Vector2):
 			currentMovement = MoveDir.Left
 
 func onContactTarget():
-	if hasTouchedPlayer:
+	if target.currentLife <= 0:
 		return
 	
 	hasTouchedPlayer = target.Kill()

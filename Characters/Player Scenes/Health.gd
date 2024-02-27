@@ -21,9 +21,15 @@ func TakeDamage(dmg : int):
 	currentHP = clamp(currentHP - dmg, 0, maxHP)
 	healthUI.UpdateHP(currentHP)
 	
+	if currentHP <= 0:
+		self.get_parent().PlayDeathAnimation()
+	
 func Heal(amount : int):
 	currentHP = clamp(currentHP + amount, 0, maxHP)
 	healthUI.UpdateHP(currentHP)
+	
+func HealMaxAmount():
+	Heal(maxHP)
 	
 func Kill():
 	TakeDamage(currentHP)
