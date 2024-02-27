@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=10 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://huv2pwg1c7an" path="res://Pick Ups Scenes/health_pickup.tscn" id="5_2quqk"]
 [ext_resource type="PackedScene" uid="uid://ca0k546chyga6" path="res://Characters/enemy/Golem 1/golem_1.tscn" id="6_vrq5a"]
 [ext_resource type="PackedScene" uid="uid://3hlhaqtubtig" path="res://Characters/enemy/Golem 2/golem_2.tscn" id="7_f31sn"]
+[ext_resource type="PackedScene" uid="uid://fuu4wtvork38" path="res://UI/Life/LifeUI.tscn" id="7_trhml"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
@@ -37,14 +38,22 @@ navigation_polygon = SubResource("NavigationPolygon_iqq27")
 [node name="GUI" type="Control" parent="."]
 z_index = 100
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_lb5xp")
 
 [node name="HealthUI" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_fclxh")]
 z_index = 100
 layout_mode = 1
+player = NodePath("../../Player")
+
+[node name="Lifes" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("7_trhml")]
+layout_mode = 1
+offset_left = 1145.0
+offset_right = 1145.0
 player = NodePath("../../Player")
 
 [node name="Golem 2" parent="." instance=ExtResource("7_f31sn")]
