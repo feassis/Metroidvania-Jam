@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtq13hln8au3l"]
+
+[ext_resource type="Script" path="res://Pulser.gd" id="1_epn1f"]
+[ext_resource type="Texture2D" uid="uid://cmbmr073xj31i" path="res://placeholder assets/Icons/tileset_icons.png" id="2_be46w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pf8ap"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txttp"]
+atlas = ExtResource("2_be46w")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahnwx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txttp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PulseControler" type="Node2D"]
+script = ExtResource("1_epn1f")
+finishingSize = 20.0
+pulseLifeTime = 0.5
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pf8ap")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.392157, 1, 1, 0.34902)
+sprite_frames = SubResource("SpriteFrames_ahnwx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

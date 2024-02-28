@@ -1,13 +1,20 @@
 extends CharacterBody2D
 class_name Player
 
+@export_category("Movement")
 @export var speed:float = 100.0
 @export var sprintSpeed:float = 300.0
 @export var dashVelocity: float = 500.0
+
+@export_category("Animation")
 @export var animManager : AnimatedSprite2D
+
+@export_category("Health and Life")
 @export var initialMaxHP: int = 5
 @export var initialLifeAmount: int = 3
 @export var health: Health
+
+@export_category("Devour")
 @export var devourFrameDelay: int = 8
 @export var timer : Timer
 
@@ -16,6 +23,15 @@ class_name Player
 @export var DownDetection : DevourDetection
 @export var RightDetection : DevourDetection
 @export var LeftDetection : DevourDetection
+
+@export_category("Pulse")
+@export var pulseWavePrafab: PackedScene
+@export var pulseCooldown: float = 5
+@export var pulseStunDuration: float = 5
+@export var pulseKnockbackSpeed: float = 150
+@export var pulseKnockbackDuration: float = 0.4
+
+var pulseTimer:float 
 
 var isDevouring : bool = false
 var isTakingDamage: bool = false
@@ -37,6 +53,9 @@ func IsInvulnerable() -> bool:
 	return isDevouring || isTakingDamage || isDead
 
 func _physics_process(delta):
+	if pulseTimer > 0:
+		pulseTimer -= delta
+	
 	if isDevouring || isTakingDamage || isDead:
 		return
 	
@@ -44,7 +63,22 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("devour"):
 		DevourAction(delta)
+	if Input.is_action_just_pressed("skill"):
+		PulseSkill()
+		
+
+func PulseSkill():
+	if pulseTimer > 0:
+		return
 	
+	pulseTimer = pulseCooldown
+	var pulseInstance : PulseWave = pulseWavePrafab.instantiate()
+	pulseInstance.stunDuration = pulseStunDuration
+	(pulseInstance as PulseWave).knockbackSpeed = pulseKnockbackSpeed
+	(pulseInstance as PulseWave).knockbackDuration = pulseKnockbackDuration
+	pulseInstance.position = position
+	get_tree().get_root().add_child(pulseInstance)
+
 func SubscribeHealthUI(ui : HealthUI):
 	health.SubscribeUI(ui)
 	
@@ -106,7 +140,6 @@ func PlayDamageAnim():
 			animManager.play("damage right")
 
 func Devour():
-	print("Devour")
 	match currentMovement:
 		MoveDir.Up:
 			UpDetection.Devour()
