@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0kluyxmvfw6l"]
+
+[ext_resource type="PackedScene" uid="uid://c80qqi34khbgw" path="res://Pick Ups Scenes/pick_up_base.tscn" id="1_xxmr7"]
+[ext_resource type="Script" path="res://UnitOverdrivePickUp.gd" id="2_guqk2"]
+
+[node name="UnitOverdrive" instance=ExtResource("1_xxmr7")]
+z_index = 1
+collision_mask = 7
+script = ExtResource("2_guqk2")
+maxHPIncrement = 1
+
+[node name="TextureRect" parent="." index="1"]
+modulate = Color(0.784314, 0.458824, 0, 0.67451)
+offset_left = -4.0
+offset_top = -3.0
+offset_right = 13.0
+offset_bottom = 14.0
+scale = Vector2(0.5, 0.5)
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
