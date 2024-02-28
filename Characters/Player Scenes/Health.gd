@@ -31,6 +31,10 @@ func Heal(amount : int):
 func HealMaxAmount():
 	Heal(maxHP)
 	
+func IncreaseMaxHP(amount: int):
+	maxHP += amount
+	healthUI.Setup(currentHP, maxHP)
+	
 func Kill():
 	TakeDamage(currentHP)
 	
