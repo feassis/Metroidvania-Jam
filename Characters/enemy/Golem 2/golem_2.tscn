@@ -24,6 +24,23 @@ func _process(delta):
 	if attackTimer > 0:
 		attackTimer = clamp(attackTimer - delta, 0, cooldown)
 	
+	if stunTimer > 0:
+		stunTimer -= delta
+	
+	if knockbackTimer > 0:
+		knockbackTimer -= delta
+		
+		if knockbackTimer <=0:
+			velocity = Vector2(0 , 0)
+		else:
+			velocity = knockbackDirection * knockbackSpeed
+		
+		move_and_slide()
+		return
+	
+	if stunTimer > 0:
+		return
+	
 	if wasDevoured:
 		return
 	
@@ -884,6 +901,7 @@ radius = 6.0
 size = Vector2(34, 30)
 
 [node name="Golem 2" type="CharacterBody2D" node_paths=PackedStringArray("UpDetection", "DownDetection", "RightDetection", "LeftDetection", "agent", "animationManager")]
+collision_mask = 7
 script = SubResource("GDScript_gws6d")
 UpDetection = NodePath("Attack Detection/UP")
 DownDetection = NodePath("Attack Detection/Down")

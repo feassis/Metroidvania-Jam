@@ -10,8 +10,40 @@ var target: Player = null
 var hasTouchedPlayer:bool = false
 var wasDevoured: bool = false
 var currentMovement: MoveDir
- 
+var stunTimer: float  
+
+var knockbackDirection: Vector2
+var knockbackTimer: float
+var knockbackSpeed: float
+
+func Knockback(dir: Vector2, speed: float, duration: float):
+	if knockbackTimer > 0:
+		return
+	knockbackDirection = dir
+	knockbackTimer = duration
+	knockbackSpeed = speed
+
 func _process(delta):
+	if stunTimer > 0:
+		stunTimer -= delta
+		
+	if stunTimer > 0:
+		stunTimer -= delta
+	
+	if knockbackTimer > 0:
+		knockbackTimer -= delta
+		
+		if knockbackTimer <=0:
+			velocity = Vector2(0 , 0)
+		else:
+			velocity = knockbackDirection * knockbackSpeed
+		
+		move_and_slide()
+		return
+	
+	if stunTimer > 0:
+		return
+	
 	animateWalk(velocity)
 	if wasDevoured:
 		return
@@ -79,13 +111,19 @@ func onContactTarget():
 		return
 	
 	hasTouchedPlayer = target.Kill()
-	
+
+
 func GetDevoured():
 	wasDevoured = true
 	self.queue_free()
 
+func Stun(duration):
+	stunTimer = duration
+	
+
+
+
 func _on_detection_area_body_entered(body):
-	print(body.name)
 	if body is Player:
 		target = (body as Player)
 
