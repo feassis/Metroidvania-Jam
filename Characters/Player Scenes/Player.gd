@@ -39,6 +39,7 @@ var isTakingDamage: bool = false
 var currentLife : int
 var lifeUI: LifeUI
 
+var devourModeTimer: float = 0
 
 var currentMovement: MoveDir= MoveDir.Down
 var startPos
@@ -52,7 +53,16 @@ func _ready():
 func IsInvulnerable() -> bool:
 	return isDevouring || isTakingDamage || isDead
 
+func IsOnDevourMode() -> bool:
+	return devourModeTimer > 0;
+	
+func DevourMode(duration: float):
+	devourModeTimer = duration
+
 func _physics_process(delta):
+	if devourModeTimer > 0:
+		devourModeTimer -= delta
+	
 	if pulseTimer > 0:
 		pulseTimer -= delta
 	

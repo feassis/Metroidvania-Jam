@@ -18,10 +18,10 @@ func _process(delta):
 		self.queue_free()
 
 func _on_area_2d_body_entered(body):
-	print(body.name)
 	if body is Enemy:
 		(body as Enemy).Stun(stunDuration)
-		(body as Enemy).Knockback((body.position - position).normalized(), knockbackSpeed, knockbackDuration)
+		(body as Enemy).Knockback((body.position - position).normalized(), 
+		knockbackSpeed, knockbackDuration)
 	##Destroy Projectile stuff##
 
 

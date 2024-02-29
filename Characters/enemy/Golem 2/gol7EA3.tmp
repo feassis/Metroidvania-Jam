@@ -99,6 +99,14 @@ func setVelocity():
 		velocity = newVel
 	setMovementDirection(velocity)
 
+func SetDirection():
+	if target.IsOnDevourMode():
+		agent.set_target_position(
+			(target.position - position) + position)
+		return
+	
+	agent.set_target_position(target.position)
+
 
 func _on_animated_sprite_2d_animation_finished():
 	var animName = animationManager.get_animation()
@@ -900,15 +908,13 @@ radius = 6.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4bha"]
 size = Vector2(34, 30)
 
-[node name="Golem 2" type="CharacterBody2D" node_paths=PackedStringArray("UpDetection", "DownDetection", "RightDetection", "LeftDetection", "agent", "animationManager")]
+[node name="Golem 2" type="CharacterBody2D" node_paths=PackedStringArray("UpDetection", "DownDetection", "RightDetection", "LeftDetection")]
 collision_mask = 7
 script = SubResource("GDScript_gws6d")
 UpDetection = NodePath("Attack Detection/UP")
 DownDetection = NodePath("Attack Detection/Down")
 RightDetection = NodePath("Attack Detection/Right")
 LeftDetection = NodePath("Attack Detection/Left")
-agent = NodePath("NavigationAgent2D")
-animationManager = NodePath("AnimatedSprite2D")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
