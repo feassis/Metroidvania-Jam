@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=14 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 [ext_resource type="PackedScene" uid="uid://b0kluyxmvfw6l" path="res://Pick Ups Scenes/unit_overdrive.tscn" id="10_w8ocs"]
 [ext_resource type="PackedScene" uid="uid://1ws8ikwhnw6r" path="res://Pick Ups Scenes/golem_eater_pick_up.tscn" id="11_3edun"]
+[ext_resource type="PackedScene" uid="uid://jhmgusrj40hq" path="res://Characters/respawn_point.tscn" id="12_fjdou"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
 vertices = PackedVector2Array(170, 263, 201, 246, 748, 130, 746, 423, 243, 338, 443, 557, 243, 384, 134, 246, 73, 263, 38, 515, 186, 387, 165, 325, 186, 335, -71, 333, 65, 324, 693, -52, 197, 170, 304, -78, 81, -57, 139, 171, 27, 10, 102, 174, 39, 170, 40, 245, 98, 245)
@@ -26,8 +27,9 @@ y_sort_enabled = true
 position = Vector2(303, 169)
 layer_1/tile_data = PackedInt32Array(327681, 1441798, 17, 327701, 1572870, 0, 786438, 1441798, 11, 786454, 917510, 5, 196593, 1179654, 10, 196599, 1179654, 10, 524276, 1179654, 5, 720890, 917510, 5, -327676, 1835014, 7)
 
-[node name="Player" parent="." instance=ExtResource("10_ulmfq")]
+[node name="Player" parent="." node_paths=PackedStringArray("respawnPoint") instance=ExtResource("10_ulmfq")]
 position = Vector2(201, 105)
+respawnPoint = NodePath("../RespawnPoint")
 
 [node name="HealthPickup" parent="." instance=ExtResource("5_2quqk")]
 position = Vector2(179, 149)
@@ -73,3 +75,7 @@ position = Vector2(169, 28)
 
 [node name="GolemEater" parent="." instance=ExtResource("11_3edun")]
 position = Vector2(267, 55)
+
+[node name="RespawnPoint" parent="." instance=ExtResource("12_fjdou")]
+z_index = 1
+position = Vector2(72, 51)
