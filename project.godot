@@ -23,6 +23,10 @@ Globals="*res://altoload/globals.tscn"
 
 project/assembly_name="Metroidicania Jam"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/addons/YATI/plugin.cfg")
+
 [input]
 
 "move up"={
