@@ -1,0 +1,198 @@
+[gd_scene load_steps=22 format=3 uid="uid://bdolodraci6xb"]
+
+[ext_resource type="Script" path="res://Shaders/Scripts/DeathScreenController.gd" id="1_70vm7"]
+[ext_resource type="Shader" path="res://Shaders/RadialBlur.gdshader" id="1_vrg5u"]
+[ext_resource type="Script" path="res://Shaders/Scripts/Blur.gd" id="3_xhcx2"]
+[ext_resource type="Shader" path="res://Shaders/StaticNoise.gdshader" id="4_7tiwl"]
+[ext_resource type="Script" path="res://Shaders/Scripts/StaticNoise.gd" id="5_kho1a"]
+[ext_resource type="Script" path="res://Shaders/Scripts/YouDiedTextLabelController.gd" id="6_fif66"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnvs1"]
+shader = ExtResource("1_vrg5u")
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_power = 0.0
+shader_parameter/sampling_count = 5
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_on040"]
+
+[sub_resource type="Curve" id="Curve_8wjlo"]
+max_value = 5.0
+_data = [Vector2(0.00526316, 0.252747), 0.0, 21.078, 0, 0, Vector2(0.389474, 5), 0.0, 0.0, 0, 0, Vector2(0.787129, 1.48352), 3.81525, 3.81525, 0, 0, Vector2(1, 0), -3.05548, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_talgv"]
+shader = ExtResource("4_7tiwl")
+shader_parameter/u_resolution = Vector2(4, 4)
+shader_parameter/distortion = 1.0
+shader_parameter/dark_value = 0.2
+shader_parameter/opacity = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_egptn"]
+
+[sub_resource type="Curve" id="Curve_01g1w"]
+_data = [Vector2(0, 0.054945), 0.0, 3.51648, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.694737, 1), -0.0509251, -0.0509251, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_dk2ii"]
+min_value = 0.2
+_data = [Vector2(0, 0.226374), 0.0, -0.434287, 0, 0, Vector2(0.505263, 1), 0.161646, 0.161646, 0, 0, Vector2(0.678947, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.214144, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iuotu"]
+shader = ExtResource("1_vrg5u")
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_power = 0.0
+shader_parameter/sampling_count = 5
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_l577a"]
+
+[sub_resource type="Curve" id="Curve_iy817"]
+max_value = 5.0
+_data = [Vector2(0.00526316, 0.252747), 0.0, 21.078, 0, 0, Vector2(0.389474, 5), 0.0, 0.0, 0, 0, Vector2(0.816832, 2.25275), 4.12245, 4.12245, 0, 0, Vector2(1, 0), -3.05548, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xptre"]
+shader = ExtResource("4_7tiwl")
+shader_parameter/u_resolution = Vector2(4, 4)
+shader_parameter/distortion = 1.0
+shader_parameter/dark_value = 0.2
+shader_parameter/opacity = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8desj"]
+
+[sub_resource type="Curve" id="Curve_xyjie"]
+_data = [Vector2(0, 0.054945), 0.0, 7.69231, 0, 0, Vector2(0.436842, 1), 0.119309, 0.119309, 0, 0, Vector2(0.763158, 1), -0.0509251, -0.0509251, 0, 0, Vector2(1, 0), -4.6671, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_jtpvf"]
+min_value = 0.2
+_data = [Vector2(0, 0.226374), 0.0, 6.82051, 0, 0, Vector2(0.284211, 1), 0.161646, 0.161646, 0, 0, Vector2(0.678947, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.214144, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0d6f"]
+shader = ExtResource("4_7tiwl")
+shader_parameter/u_resolution = Vector2(3, 3)
+shader_parameter/distortion = 1.0
+shader_parameter/dark_value = 0.2
+shader_parameter/opacity = 1.0
+
+[node name="DeathScreenShowcase" type="Node2D"]
+
+[node name="DeathScreen" type="Control" parent="."]
+visible = false
+z_index = 101
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_70vm7")
+blurChangeTime = 5.0
+opacityChangeTime = 5.0
+darknessChangeTime = 5.0
+
+[node name="Blur" type="TextureRect" parent="DeathScreen"]
+visible = false
+material = SubResource("ShaderMaterial_fnvs1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -23.0
+offset_right = 1992.0
+offset_bottom = 1057.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_on040")
+script = ExtResource("3_xhcx2")
+curve = SubResource("Curve_8wjlo")
+
+[node name="StaticNoise" type="TextureRect" parent="DeathScreen"]
+visible = false
+material = SubResource("ShaderMaterial_talgv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2280.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_egptn")
+script = ExtResource("5_kho1a")
+opacityCurve = SubResource("Curve_01g1w")
+darknessCurve = SubResource("Curve_dk2ii")
+
+[node name="FullDeathScreen" type="Control" parent="."]
+z_index = 101
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 311.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_70vm7")
+blurChangeTime = 8.0
+opacityChangeTime = 8.0
+darknessChangeTime = 8.0
+fullDeath = true
+
+[node name="Blur" type="TextureRect" parent="FullDeathScreen"]
+material = SubResource("ShaderMaterial_iuotu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -23.0
+offset_right = 1992.0
+offset_bottom = 1057.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_l577a")
+script = ExtResource("3_xhcx2")
+curve = SubResource("Curve_iy817")
+
+[node name="StaticNoise" type="TextureRect" parent="FullDeathScreen"]
+material = SubResource("ShaderMaterial_xptre")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2280.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_8desj")
+script = ExtResource("5_kho1a")
+opacityCurve = SubResource("Curve_xyjie")
+darknessCurve = SubResource("Curve_jtpvf")
+
+[node name="YouDiedTextLabel" type="RichTextLabel" parent="FullDeathScreen"]
+visible = false
+material = SubResource("ShaderMaterial_u0d6f")
+clip_contents = false
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 267.0
+offset_top = 248.0
+offset_right = 649.0
+offset_bottom = 361.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 156
+bbcode_enabled = true
+text = "YOU DIED"
+fit_content = true
+scroll_active = false
+tab_size = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+script = ExtResource("6_fif66")
