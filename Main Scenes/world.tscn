@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=13 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dsy253qu08cyr" path="res://Pick Ups Scenes/extra_unit_pick_up.tscn" id="9_3megw"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 [ext_resource type="PackedScene" uid="uid://b0kluyxmvfw6l" path="res://Pick Ups Scenes/unit_overdrive.tscn" id="10_w8ocs"]
+[ext_resource type="PackedScene" uid="uid://bkdlhf7oy87qe" path="res://Maps/R0000.tmx" id="11_w5n88"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
 vertices = PackedVector2Array(170, 263, 201, 246, 748, 130, 746, 423, 243, 338, 443, 557, 243, 384, 134, 246, 73, 263, 38, 515, 186, 387, 165, 325, 186, 335, -71, 333, 65, 324, 693, -52, 197, 170, 304, -78, 81, -57, 139, 171, 27, 10, 102, 174, 39, 170, 40, 245, 98, 245)
@@ -69,3 +70,6 @@ position = Vector2(226, 39)
 
 [node name="UnitOverdrive" parent="." instance=ExtResource("10_w8ocs")]
 position = Vector2(169, 28)
+
+[node name="R0000" parent="." instance=ExtResource("11_w5n88")]
+position = Vector2(-163, 314)

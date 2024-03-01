@@ -4,7 +4,7 @@
   <property name="minimap" value="maps/MINI_R0000.png"/>
  </properties>
  <tileset firstgid="1" source="V1.tsx"/>
- <layer id="1" name="101 BG" width="30" height="30" visible="0">
+ <layer id="1" name="101 BG" width="30" height="30">
   <data encoding="csv">
    <chunk x="16" y="-48" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -530,7 +530,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="2" name="102 BG Cosmetic" width="30" height="30" visible="0">
+ <layer id="2" name="102 BG Cosmetic" width="30" height="30">
   <data encoding="csv">
    <chunk x="0" y="-32" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -714,7 +714,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="3" name="Walls" width="30" height="30" visible="0">
+ <layer id="3" name="Walls" width="30" height="30">
   <data encoding="csv">
    <chunk x="0" y="-48" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1258,7 +1258,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="4" name="Wall Cosmetic" width="30" height="30" visible="0">
+ <layer id="4" name="Wall Cosmetic" width="30" height="30">
   <data encoding="csv">
    <chunk x="0" y="-32" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -2058,7 +2058,7 @@
 </chunk>
   </data>
  </layer>
- <objectgroup color="#aa0000" id="6" name="Static" visible="0">
+ <objectgroup color="#aa0000" id="6" name="Static">
   <object id="1" x="496" y="-416">
    <polygon points="0,0 304,0 304,192 400,192 400,128 624,128 624,288 304,288 304,592 864,592 864,496 1152,496 1152,592 1360,592 1360,-368 0,-368"/>
   </object>
@@ -2087,7 +2087,7 @@
   <object id="27" x="95.2727" y="-407.273" width="17.2727" height="23.6364"/>
   <object id="28" x="208.364" y="-401.273" width="15.0909" height="18.5455"/>
  </objectgroup>
- <objectgroup color="#ffff00" id="7" name="Object data" visible="0">
+ <objectgroup color="#ffff00" id="7" name="Object data">
   <object id="10" name="Spawner" x="399" y="-108.5">
    <properties>
     <property name="id" type="int" value="0"/>
