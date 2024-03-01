@@ -21,7 +21,7 @@ project/assembly_name="Metroidicania Jam"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/addons/YATI/plugin.cfg")
+enabled=PackedStringArray("res://addons/YATI/plugin.cfg")
 
 [input]
 
