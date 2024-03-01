@@ -33,7 +33,7 @@ func _process(delta):
 		UpdateShaders(delta)
 	
 func UpdateShaders(delta):
-	if (!_noiseNode.finishedUpdate and !_blurNode.finishedUpdate):
+	if (!_noiseNode.finishedUpdate or !_blurNode.finishedUpdate):
 		if (fullDeath):
 			_textNode.SetOpacity(_noiseNode.opacity)
 			if(darknessChangeTime > 0 and _noiseNode.opacity >= 1 and !_textNode.visible):
