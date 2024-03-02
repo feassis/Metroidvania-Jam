@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://jhmgusrj40hq"]
+
+[ext_resource type="Texture2D" uid="uid://cmbmr073xj31i" path="res://placeholder assets/Icons/tileset_icons.png" id="1_2t7dq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sajh4"]
+atlas = ExtResource("1_2t7dq")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4tq4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sajh4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RespawnPoint" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.172549, 1, 1, 0.54902)
+scale = Vector2(1.61875, 1.61875)
+sprite_frames = SubResource("SpriteFrames_4tq4r")
