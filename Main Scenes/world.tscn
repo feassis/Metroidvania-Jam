@@ -1,6 +1,5 @@
 [gd_scene load_steps=13 format=3 uid="uid://b6ao504ibchgr"]
 
-[ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
 [ext_resource type="PackedScene" uid="uid://fd12erxypbi6" path="res://UI/Health/healthUI.tscn" id="4_fclxh"]
 [ext_resource type="PackedScene" uid="uid://huv2pwg1c7an" path="res://Pick Ups Scenes/health_pickup.tscn" id="5_2quqk"]
@@ -10,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dsy253qu08cyr" path="res://Pick Ups Scenes/extra_unit_pick_up.tscn" id="9_3megw"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 [ext_resource type="PackedScene" uid="uid://b0kluyxmvfw6l" path="res://Pick Ups Scenes/unit_overdrive.tscn" id="10_w8ocs"]
+[ext_resource type="PackedScene" uid="uid://jhmgusrj40hq" path="res://Characters/respawn_point.tscn" id="11_8t1iy"]
 [ext_resource type="PackedScene" uid="uid://bkdlhf7oy87qe" path="res://Maps/R0000.tmx" id="11_w5n88"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
@@ -21,10 +21,6 @@ agent_radius = 15.0
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
-
-[node name="TileMap" parent="." instance=ExtResource("1_o7rro")]
-position = Vector2(303, 169)
-layer_1/tile_data = PackedInt32Array(327681, 1441798, 17, 327701, 1572870, 0, 786438, 1441798, 11, 786454, 917510, 5, 196593, 1179654, 10, 196599, 1179654, 10, 524276, 1179654, 5, 720890, 917510, 5, -327676, 1835014, 7)
 
 [node name="Player" parent="." instance=ExtResource("10_ulmfq")]
 position = Vector2(201, 105)
@@ -72,4 +68,9 @@ position = Vector2(226, 39)
 position = Vector2(169, 28)
 
 [node name="R0000" parent="." instance=ExtResource("11_w5n88")]
+y_sort_enabled = true
 position = Vector2(-163, 314)
+
+[node name="RespawnPoint" parent="." instance=ExtResource("11_8t1iy")]
+z_index = 1
+position = Vector2(309, -17)
