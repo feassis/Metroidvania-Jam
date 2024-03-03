@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cref6v5e7jyk"
-path="res://.godot/imported/TX Tileset Stone Ground.png-ce919c68946a0145df9caccd6b4615d9.ctex"
+uid="uid://ccwm4lwe3m3e7"
+path="res://.godot/imported/Golem Eater.png-469f1992c1c22ed2ba6b3872af9940c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Placeholder Assets/Pixel Art Top Down - Basic/Texture/TX Tileset Stone Ground.png"
-dest_files=["res://.godot/imported/TX Tileset Stone Ground.png-ce919c68946a0145df9caccd6b4615d9.ctex"]
+source_file="res://Art/Pickups/Golem Eater.png"
+dest_files=["res://.godot/imported/Golem Eater.png-469f1992c1c22ed2ba6b3872af9940c3.ctex"]
 
 [params]
 
