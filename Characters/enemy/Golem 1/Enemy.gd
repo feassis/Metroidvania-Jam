@@ -16,6 +16,7 @@ var knockbackDirection: Vector2
 var knockbackTimer: float
 var knockbackSpeed: float
 
+
 func Knockback(dir: Vector2, speed: float, duration: float):
 	if knockbackTimer > 0:
 		return
@@ -24,6 +25,7 @@ func Knockback(dir: Vector2, speed: float, duration: float):
 	knockbackSpeed = speed
 
 func _process(delta):
+	
 	if stunTimer > 0:
 		stunTimer -= delta
 		
@@ -52,7 +54,7 @@ func _process(delta):
 		velocity = Vector2(0,0)
 		return
 	
-	agent.set_target_position(target.position)
+	SetDirection()
 	
 	var distanceToTarget = position.distance_to(target.position)
 	
@@ -67,6 +69,14 @@ func _process(delta):
 	setMovementDirection(velocity)
 
 	move_and_slide()
+
+func SetDirection():
+	if target.IsOnDevourMode():
+		agent.set_target_position(
+			(target.position - position)*-1 + position)
+		return
+	
+	agent.set_target_position(target.position)
 
 func animateWalk(vel: Vector2):
 	if vel == Vector2(0, 0):
@@ -115,13 +125,13 @@ func onContactTarget():
 
 func GetDevoured():
 	wasDevoured = true
-	self.queue_free()
+	Death()
 
 func Stun(duration):
 	stunTimer = duration
 	
-
-
+func Death():
+	self.queue_free()
 
 func _on_detection_area_body_entered(body):
 	if body is Player:

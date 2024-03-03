@@ -31,6 +31,11 @@ class_name Player
 @export var pulseKnockbackSpeed: float = 150
 @export var pulseKnockbackDuration: float = 0.4
 
+@export_category("Reset Ability")
+@export var respawnPoint: Node2D
+@export var respawnCoolDown: float = 300
+var resetTimer: float = 0
+
 var pulseTimer:float 
 
 var isDevouring : bool = false
@@ -39,20 +44,30 @@ var isTakingDamage: bool = false
 var currentLife : int
 var lifeUI: LifeUI
 
+var devourModeTimer: float = 0
 
 var currentMovement: MoveDir= MoveDir.Down
 var startPos
 var isDead: bool= false
 
+var currentSkill: Skill = Skill.Reset
 
 func _ready():
 	PlayAnimMove(Vector2(0,0))
-	startPos = position
 	
 func IsInvulnerable() -> bool:
 	return isDevouring || isTakingDamage || isDead
 
+func IsOnDevourMode() -> bool:
+	return devourModeTimer > 0;
+	
+func DevourMode(duration: float):
+	devourModeTimer = duration
+
 func _physics_process(delta):
+	if devourModeTimer > 0:
+		devourModeTimer -= delta
+	
 	if pulseTimer > 0:
 		pulseTimer -= delta
 	
@@ -64,8 +79,18 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("devour"):
 		DevourAction(delta)
 	if Input.is_action_just_pressed("skill"):
-		PulseSkill()
+		match currentSkill:
+			Skill.Pulse:
+				PulseSkill()
+			Skill.Reset:
+				ResetSkill()
 		
+func ResetSkill():
+	if resetTimer > 0:
+		return
+	
+	resetTimer = respawnCoolDown
+	position = respawnPoint.position
 
 func PulseSkill():
 	if pulseTimer > 0:
@@ -216,6 +241,7 @@ func ControlCurrentMoveDirection(direction: Vector2):
 	
 
 enum MoveDir {Left, Right, Up, Down}
+enum Skill {Pulse, Reset}
 
 func PlayDeathAnimation():
 	isDead = true
@@ -234,7 +260,7 @@ func ProcessDeath():
 		print("Game Over")
 	else:
 		currentLife = clamp(currentLife - 1, 0, 99999)
-		position = startPos
+		position = respawnPoint.position
 		health.HealMaxAmount()
 		isTakingDamage = false
 		isDead = false
@@ -272,3 +298,5 @@ func _on_animated_sprite_2d_animation_finished():
 			ProcessDeath()
 		"death left":
 			ProcessDeath()
+			
+

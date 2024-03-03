@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://b6ao504ibchgr"]
+
+[ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
+[ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
+[ext_resource type="PackedScene" uid="uid://fd12erxypbi6" path="res://UI/Health/healthUI.tscn" id="4_fclxh"]
+[ext_resource type="PackedScene" uid="uid://huv2pwg1c7an" path="res://Pick Ups Scenes/health_pickup.tscn" id="5_2quqk"]
+[ext_resource type="PackedScene" uid="uid://ca0k546chyga6" path="res://Characters/enemy/Golem 1/golem_1.tscn" id="6_vrq5a"]
+[ext_resource type="PackedScene" uid="uid://3hlhaqtubtig" path="res://Characters/enemy/Golem 2/golem_2.tscn" id="7_f31sn"]
+[ext_resource type="PackedScene" uid="uid://fuu4wtvork38" path="res://UI/Life/LifeUI.tscn" id="7_trhml"]
+[ext_resource type="PackedScene" uid="uid://dsy253qu08cyr" path="res://Pick Ups Scenes/extra_unit_pick_up.tscn" id="9_3megw"]
+[ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
+[ext_resource type="PackedScene" uid="uid://b0kluyxmvfw6l" path="res://Pick Ups Scenes/unit_overdrive.tscn" id="10_w8ocs"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
+vertices = PackedVector2Array(170, 263, 201, 246, 748, 130, 746, 423, 243, 338, 443, 557, 243, 384, 134, 246, 73, 263, 38, 515, 186, 387, 165, 325, 186, 335, -71, 333, 65, 324, 693, -52, 197, 170, 304, -78, 81, -57, 139, 171, 27, 10, 102, 174, 39, 170, 40, 245, 98, 245)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(7, 1, 0, 8), PackedInt32Array(6, 5, 9, 10), PackedInt32Array(11, 12, 10, 9, 13, 14), PackedInt32Array(15, 2, 1, 16, 17), PackedInt32Array(18, 17, 16, 19, 20), PackedInt32Array(20, 19, 21, 22), PackedInt32Array(13, 20, 22, 23), PackedInt32Array(21, 19, 7, 24), PackedInt32Array(24, 7, 8, 23), PackedInt32Array(0, 4, 12, 11), PackedInt32Array(14, 13, 23, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(74, -72, 15, 1, -88, 336, 29, 530, 446, 573, 761, 434, 763, 130, 704, -67, 304, -94), PackedVector2Array(154, 278, 151, 310, 82, 309, 86, 278), PackedVector2Array(183, 185, 185, 231, 150, 231, 153, 186), PackedVector2Array(86, 188, 84, 230, 55, 230, 54, 186), PackedVector2Array(201, 371, 201, 351, 228, 352, 228, 370)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 15.0
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+
+[node name="TileMap" parent="." instance=ExtResource("1_o7rro")]
+position = Vector2(303, 169)
+layer_1/tile_data = PackedInt32Array(327681, 1441798, 17, 327701, 1572870, 0, 786438, 1441798, 11, 786454, 917510, 5, 196593, 1179654, 10, 196599, 1179654, 10, 524276, 1179654, 5, 720890, 917510, 5, -327676, 1835014, 7)
+
+[node name="Player" parent="." instance=ExtResource("10_ulmfq")]
+position = Vector2(201, 105)
+
+[node name="HealthPickup" parent="." instance=ExtResource("5_2quqk")]
+position = Vector2(179, 149)
+
+[node name="Golem 1" parent="." instance=ExtResource("6_vrq5a")]
+position = Vector2(123, 355)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_iqq27")
+
+[node name="GUI" type="Control" parent="."]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_lb5xp")
+
+[node name="HealthUI" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_fclxh")]
+z_index = 100
+layout_mode = 1
+player = NodePath("../../Player")
+
+[node name="Lifes" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("7_trhml")]
+layout_mode = 1
+offset_left = 1145.0
+offset_right = 1145.0
+player = NodePath("../../Player")
+
+[node name="Golem 2" parent="." instance=ExtResource("7_f31sn")]
+position = Vector2(587, 222)
+
+[node name="Extra Unit Pick UP" parent="." instance=ExtResource("9_3megw")]
+position = Vector2(128, 58)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("5_2quqk")]
+position = Vector2(226, 39)
+
+[node name="UnitOverdrive" parent="." instance=ExtResource("10_w8ocs")]
+position = Vector2(169, 28)
