@@ -10,6 +10,7 @@ var finishedUpdate : bool
 func Init(fullTime): 
 	time = fullTime
 	blurCurrentTime = 0
+	finishedUpdate = false
 
 func Update(delta):
 	if (blurCurrentTime < time):
