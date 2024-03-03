@@ -20,7 +20,7 @@ func Init(fullOpacityChangeTime, fullDarknessChangeTime):
 	darknessChangeTime = fullDarknessChangeTime
 	opacityCurrentTime = 0
 	darknessCurrentTime = 0
-	
+	finishedUpdate = false
 
 func Update(delta):
 	if (opacityCurrentTime < opacityChangeTime):
