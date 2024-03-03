@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=34 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
@@ -7,10 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://ca0k546chyga6" path="res://Characters/enemy/Golem 1/golem_1.tscn" id="6_vrq5a"]
 [ext_resource type="PackedScene" uid="uid://3hlhaqtubtig" path="res://Characters/enemy/Golem 2/golem_2.tscn" id="7_f31sn"]
 [ext_resource type="PackedScene" uid="uid://fuu4wtvork38" path="res://UI/Life/LifeUI.tscn" id="7_trhml"]
+[ext_resource type="Script" path="res://Shaders/Scripts/DeathScreenController.gd" id="8_kkddk"]
 [ext_resource type="PackedScene" uid="uid://dsy253qu08cyr" path="res://Pick Ups Scenes/extra_unit_pick_up.tscn" id="9_3megw"]
+[ext_resource type="Shader" path="res://Shaders/RadialBlur.gdshader" id="9_i38n1"]
+[ext_resource type="Script" path="res://Shaders/Scripts/Blur.gd" id="10_0t4fc"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 [ext_resource type="PackedScene" uid="uid://b0kluyxmvfw6l" path="res://Pick Ups Scenes/unit_overdrive.tscn" id="10_w8ocs"]
+[ext_resource type="Shader" path="res://Shaders/StaticNoise.gdshader" id="11_0udm2"]
+[ext_resource type="Script" path="res://Shaders/Scripts/YouDiedTextLabelController.gd" id="11_ebcpe"]
 [ext_resource type="PackedScene" uid="uid://bkdlhf7oy87qe" path="res://Maps/R0000.tmx" id="11_w5n88"]
+[ext_resource type="Script" path="res://Shaders/Scripts/StaticNoise.gd" id="12_yuwyc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
 vertices = PackedVector2Array(170, 263, 201, 246, 748, 130, 746, 423, 243, 338, 443, 557, 243, 384, 134, 246, 73, 263, 38, 515, 186, 387, 165, 325, 186, 335, -71, 333, 65, 324, 693, -52, 197, 170, 304, -78, 81, -57, 139, 171, 27, 10, 102, 174, 39, 170, 40, 245, 98, 245)
@@ -18,6 +24,75 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(74, -72, 15, 1, -88, 336, 29, 530, 446, 573, 761, 434, 763, 130, 704, -67, 304, -94), PackedVector2Array(154, 278, 151, 310, 82, 309, 86, 278), PackedVector2Array(183, 185, 185, 231, 150, 231, 153, 186), PackedVector2Array(86, 188, 84, 230, 55, 230, 54, 186), PackedVector2Array(201, 371, 201, 351, 228, 352, 228, 370)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0uu13"]
+shader = ExtResource("9_i38n1")
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_power = 0.0
+shader_parameter/sampling_count = 5
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tufoh"]
+
+[sub_resource type="Curve" id="Curve_4abs2"]
+max_value = 5.0
+_data = [Vector2(0.00526316, 0.252747), 0.0, 21.078, 0, 0, Vector2(0.389474, 5), 0.0, 0.0, 0, 0, Vector2(0.787129, 1.48352), 3.81525, 3.81525, 0, 0, Vector2(1, 0), -3.05548, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gktlv"]
+shader = ExtResource("11_0udm2")
+shader_parameter/u_resolution = Vector2(4, 4)
+shader_parameter/distortion = 1.0
+shader_parameter/dark_value = 0.2
+shader_parameter/opacity = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rcmqb"]
+
+[sub_resource type="Curve" id="Curve_fbcun"]
+_data = [Vector2(0, 0.054945), 0.0, 3.51648, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.694737, 1), -0.0509251, -0.0509251, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_3qqs0"]
+min_value = 0.2
+_data = [Vector2(0, 0.226374), 0.0, -0.434287, 0, 0, Vector2(0.505263, 1), 0.161646, 0.161646, 0, 0, Vector2(0.678947, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.214144, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qkux"]
+shader = ExtResource("9_i38n1")
+shader_parameter/blur_center = Vector2(0.5, 0.5)
+shader_parameter/blur_power = 0.0
+shader_parameter/sampling_count = 5
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ru148"]
+
+[sub_resource type="Curve" id="Curve_mabei"]
+max_value = 5.0
+_data = [Vector2(0.00526316, 0.252747), 0.0, 21.078, 0, 0, Vector2(0.389474, 5), 0.0, 0.0, 0, 0, Vector2(0.816832, 2.25275), 4.12245, 4.12245, 0, 0, Vector2(1, 0), -3.05548, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y87xr"]
+shader = ExtResource("11_0udm2")
+shader_parameter/u_resolution = Vector2(4, 4)
+shader_parameter/distortion = 1.0
+shader_parameter/dark_value = 0.2
+shader_parameter/opacity = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_owe0a"]
+
+[sub_resource type="Curve" id="Curve_v4jbx"]
+_data = [Vector2(0, 0.054945), 0.0, 7.69231, 0, 0, Vector2(0.436842, 1), 0.119309, 0.119309, 0, 0, Vector2(0.763158, 1), -0.0509251, -0.0509251, 0, 0, Vector2(1, 0), -4.6671, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_82dry"]
+min_value = 0.2
+_data = [Vector2(0, 0.226374), 0.0, 6.82051, 0, 0, Vector2(0.284211, 1), 0.161646, 0.161646, 0, 0, Vector2(0.678947, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.214144, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_loeag"]
+shader = ExtResource("11_0udm2")
+shader_parameter/u_resolution = Vector2(3, 3)
+shader_parameter/distortion = 1.0
+shader_parameter/dark_value = 0.2
+shader_parameter/opacity = 1.0
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -47,6 +122,126 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_lb5xp")
+
+[node name="DeathScreen" type="Control" parent="GUI"]
+z_index = 101
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_kkddk")
+blurChangeTime = 5.0
+opacityChangeTime = 5.0
+darknessChangeTime = 5.0
+
+[node name="Blur" type="TextureRect" parent="GUI/DeathScreen"]
+material = SubResource("ShaderMaterial_0uu13")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -23.0
+offset_right = 1992.0
+offset_bottom = 1057.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_tufoh")
+script = ExtResource("10_0t4fc")
+curve = SubResource("Curve_4abs2")
+
+[node name="StaticNoise" type="TextureRect" parent="GUI/DeathScreen"]
+material = SubResource("ShaderMaterial_gktlv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2280.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_rcmqb")
+script = ExtResource("12_yuwyc")
+opacityCurve = SubResource("Curve_fbcun")
+darknessCurve = SubResource("Curve_3qqs0")
+
+[node name="FullDeathScreen" type="Control" parent="GUI"]
+z_index = 101
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 311.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_kkddk")
+blurChangeTime = 8.0
+opacityChangeTime = 8.0
+darknessChangeTime = 8.0
+fullDeath = true
+
+[node name="Blur" type="TextureRect" parent="GUI/FullDeathScreen"]
+material = SubResource("ShaderMaterial_2qkux")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -23.0
+offset_right = 1992.0
+offset_bottom = 1057.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_ru148")
+script = ExtResource("10_0t4fc")
+curve = SubResource("Curve_mabei")
+
+[node name="StaticNoise" type="TextureRect" parent="GUI/FullDeathScreen"]
+material = SubResource("ShaderMaterial_y87xr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2280.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_owe0a")
+script = ExtResource("12_yuwyc")
+opacityCurve = SubResource("Curve_v4jbx")
+darknessCurve = SubResource("Curve_82dry")
+
+[node name="YouDiedTextLabel" type="RichTextLabel" parent="GUI/FullDeathScreen"]
+visible = false
+material = SubResource("ShaderMaterial_loeag")
+clip_contents = false
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 267.0
+offset_top = 248.0
+offset_right = 649.0
+offset_bottom = 361.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 156
+bbcode_enabled = true
+text = "YOU DIED"
+fit_content = true
+scroll_active = false
+tab_size = 1
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+script = ExtResource("11_ebcpe")
 
 [node name="HealthUI" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_fclxh")]
 z_index = 100
