@@ -101,8 +101,11 @@ y_sort_enabled = true
 position = Vector2(303, 169)
 layer_1/tile_data = PackedInt32Array(327681, 1441798, 17, 327701, 1572870, 0, 786438, 1441798, 11, 786454, 917510, 5, 196593, 1179654, 10, 196599, 1179654, 10, 524276, 1179654, 5, 720890, 917510, 5, -327676, 1835014, 7)
 
-[node name="Player" parent="." instance=ExtResource("10_ulmfq")]
+[node name="Player" parent="." node_paths=PackedStringArray("respawnPoint", "deathScene", "fullDeathScene") instance=ExtResource("10_ulmfq")]
 position = Vector2(201, 105)
+respawnPoint = NodePath("../RespawnPoint")
+deathScene = NodePath("../CanvasLayer/GUI/FullScreenVfx/DeathScreen")
+fullDeathScene = NodePath("../CanvasLayer/GUI/FullScreenVfx/FullDeathScreen")
 
 [node name="HealthPickup" parent="." instance=ExtResource("5_2quqk")]
 position = Vector2(179, 149)

@@ -1162,7 +1162,7 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxlvu"]
 size = Vector2(34, 30)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "currentAbility")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "UpDetection", "DownDetection", "RightDetection", "LeftDetection", "unlockedAbilities")]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
@@ -1171,7 +1171,12 @@ script = ExtResource("1_0260g")
 speed = 200.0
 animManager = NodePath("AnimatedSprite2D")
 health = NodePath("Health")
-currentAbility = NodePath("Abilities/ResetAbility")
+timer = NodePath("Timer")
+UpDetection = NodePath("Devour Detection/UP")
+DownDetection = NodePath("Devour Detection/Down")
+RightDetection = NodePath("Devour Detection/Right")
+LeftDetection = NodePath("Devour Detection/Left")
+unlockedAbilities = [NodePath("Abilities/ProjectileAbility"), NodePath("Abilities/PulseAbility"), NodePath("Abilities/ResetAbility")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
