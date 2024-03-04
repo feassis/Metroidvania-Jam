@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=34 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 [ext_resource type="PackedScene" uid="uid://b0kluyxmvfw6l" path="res://Pick Ups Scenes/unit_overdrive.tscn" id="10_w8ocs"]
 [ext_resource type="Shader" path="res://Shaders/StaticNoise.gdshader" id="11_0udm2"]
+[ext_resource type="PackedScene" uid="uid://jhmgusrj40hq" path="res://Characters/respawn_point.tscn" id="11_8t1iy"]
 [ext_resource type="Script" path="res://Shaders/Scripts/YouDiedTextLabelController.gd" id="11_ebcpe"]
 [ext_resource type="Script" path="res://Shaders/Scripts/StaticNoise.gd" id="12_yuwyc"]
 
@@ -112,8 +113,21 @@ position = Vector2(123, 355)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_iqq27")
 
-[node name="GUI" type="Control" parent="."]
-z_index = 100
+[node name="Golem 2" parent="." instance=ExtResource("7_f31sn")]
+position = Vector2(587, 222)
+
+[node name="Extra Unit Pick UP" parent="." instance=ExtResource("9_3megw")]
+position = Vector2(128, 58)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("5_2quqk")]
+position = Vector2(226, 39)
+
+[node name="UnitOverdrive" parent="." instance=ExtResource("10_w8ocs")]
+position = Vector2(169, 28)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,25 +136,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_lb5xp")
 
-[node name="HealthUI" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_fclxh")]
-z_index = 100
+[node name="HealthUI" parent="CanvasLayer/GUI" node_paths=PackedStringArray("player") instance=ExtResource("4_fclxh")]
 layout_mode = 1
-player = NodePath("../../Player")
+player = NodePath("../../../Player")
 
-[node name="Lifes" parent="GUI" node_paths=PackedStringArray("player") instance=ExtResource("7_trhml")]
+[node name="Lifes" parent="CanvasLayer/GUI" node_paths=PackedStringArray("player") instance=ExtResource("7_trhml")]
 layout_mode = 1
-offset_left = 1145.0
-offset_right = 1145.0
-player = NodePath("../../Player")
+player = NodePath("../../../Player")
 
-[node name="FullScreenVfx" type="Control" parent="GUI"]
-z_index = 101
+[node name="FullScreenVfx" type="Control" parent="CanvasLayer/GUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="DeathScreen" type="Control" parent="GUI/FullScreenVfx"]
+[node name="DeathScreen" type="Control" parent="CanvasLayer/GUI/FullScreenVfx"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -150,7 +160,7 @@ blurChangeTime = 5.0
 opacityChangeTime = 5.0
 darknessChangeTime = 5.0
 
-[node name="Blur" type="TextureRect" parent="GUI/FullScreenVfx/DeathScreen"]
+[node name="Blur" type="TextureRect" parent="CanvasLayer/GUI/FullScreenVfx/DeathScreen"]
 material = SubResource("ShaderMaterial_t6maw")
 layout_mode = 1
 anchors_preset = 15
@@ -166,7 +176,7 @@ texture = SubResource("CanvasTexture_4fomc")
 script = ExtResource("10_0t4fc")
 curve = SubResource("Curve_7r85j")
 
-[node name="StaticNoise" type="TextureRect" parent="GUI/FullScreenVfx/DeathScreen"]
+[node name="StaticNoise" type="TextureRect" parent="CanvasLayer/GUI/FullScreenVfx/DeathScreen"]
 material = SubResource("ShaderMaterial_eresy")
 layout_mode = 1
 anchors_preset = 15
@@ -181,7 +191,7 @@ script = ExtResource("12_yuwyc")
 opacityCurve = SubResource("Curve_1h510")
 darknessCurve = SubResource("Curve_k1xmo")
 
-[node name="FullDeathScreen" type="Control" parent="GUI/FullScreenVfx"]
+[node name="FullDeathScreen" type="Control" parent="CanvasLayer/GUI/FullScreenVfx"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -199,7 +209,7 @@ opacityChangeTime = 8.0
 darknessChangeTime = 8.0
 fullDeath = true
 
-[node name="Blur" type="TextureRect" parent="GUI/FullScreenVfx/FullDeathScreen"]
+[node name="Blur" type="TextureRect" parent="CanvasLayer/GUI/FullScreenVfx/FullDeathScreen"]
 material = SubResource("ShaderMaterial_81j7a")
 layout_mode = 1
 anchors_preset = 15
@@ -215,7 +225,7 @@ texture = SubResource("CanvasTexture_tvyes")
 script = ExtResource("10_0t4fc")
 curve = SubResource("Curve_8e0ts")
 
-[node name="StaticNoise" type="TextureRect" parent="GUI/FullScreenVfx/FullDeathScreen"]
+[node name="StaticNoise" type="TextureRect" parent="CanvasLayer/GUI/FullScreenVfx/FullDeathScreen"]
 material = SubResource("ShaderMaterial_tt1tg")
 layout_mode = 1
 anchors_preset = 15
@@ -230,7 +240,7 @@ script = ExtResource("12_yuwyc")
 opacityCurve = SubResource("Curve_nw666")
 darknessCurve = SubResource("Curve_gqrkr")
 
-[node name="YouDiedTextLabel" type="RichTextLabel" parent="GUI/FullScreenVfx/FullDeathScreen"]
+[node name="YouDiedTextLabel" type="RichTextLabel" parent="CanvasLayer/GUI/FullScreenVfx/FullDeathScreen"]
 visible = false
 material = SubResource("ShaderMaterial_n6s4s")
 clip_contents = false
@@ -255,14 +265,17 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 script = ExtResource("11_ebcpe")
 
-[node name="Golem 2" parent="." instance=ExtResource("7_f31sn")]
+[node name="Golem 3" parent="." instance=ExtResource("7_f31sn")]
 position = Vector2(587, 222)
 
-[node name="Extra Unit Pick UP" parent="." instance=ExtResource("9_3megw")]
+[node name="Extra Unit Pick UP2" parent="." instance=ExtResource("9_3megw")]
 position = Vector2(128, 58)
 
-[node name="HealthPickup2" parent="." instance=ExtResource("5_2quqk")]
+[node name="HealthPickup3" parent="." instance=ExtResource("5_2quqk")]
 position = Vector2(226, 39)
 
-[node name="UnitOverdrive" parent="." instance=ExtResource("10_w8ocs")]
+[node name="UnitOverdrive2" parent="." instance=ExtResource("10_w8ocs")]
 position = Vector2(169, 28)
+
+[node name="RespawnPoint" parent="." instance=ExtResource("11_8t1iy")]
+position = Vector2(283, 41)

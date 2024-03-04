@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 class_name HealthUI
 
 @export var healthHolder : HBoxContainer
