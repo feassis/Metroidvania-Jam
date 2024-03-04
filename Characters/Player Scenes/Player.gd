@@ -26,7 +26,7 @@ class_name Player
 
 @export_category("Abilities")
 @export var unlockedAbilities : Array[BaseAbility] = []
-@export var currentAbility : BaseAbility
+var currentSkillIndex: int = 0
 
 @export_category("Reset Ability")
 @export var respawnPoint: Node2D
@@ -61,6 +61,8 @@ func DevourMode(duration: float):
 	devourModeTimer = duration
 
 func _physics_process(delta):
+	HandleSkillChange()
+	
 	if devourModeTimer > 0:
 		devourModeTimer -= delta
 	
@@ -73,8 +75,11 @@ func _physics_process(delta):
 		DevourAction(delta)
 		
 	if Input.is_action_just_pressed("skill"):
-		if currentAbility:
-			currentAbility.use(self)
+		if unlockedAbilities[GetSkillIndex()]:
+			unlockedAbilities[GetSkillIndex()].use(self)
+
+func GetSkillIndex() -> int:
+	return abs(currentSkillIndex % len(unlockedAbilities)) 
 
 func SubscribeHealthUI(ui : HealthUI):
 	health.SubscribeUI(ui)
@@ -213,6 +218,13 @@ func ControlCurrentMoveDirection(direction: Vector2):
 	
 
 enum MoveDir {Left, Right, Up, Down}
+
+func HandleSkillChange():
+	if Input.is_action_just_pressed("next skill"):
+		currentSkillIndex += 1
+	
+	if Input.is_action_just_pressed("previous skill"):
+		currentSkillIndex -=1
 
 func PlayDeathAnimation():
 	isDead = true
