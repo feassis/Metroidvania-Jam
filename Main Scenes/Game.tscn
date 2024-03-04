@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5a06ssrgnvei"]
-
-[ext_resource type="PackedScene" uid="uid://bkdlhf7oy87qe" path="res://Maps/R0000.tmx" id="1_mftg6"]
-
-[node name="Game" type="Node2D"]
-
-[node name="R0000" parent="." instance=ExtResource("1_mftg6")]
-visibility_layer = 0
-position = Vector2(301, 37)

@@ -57,16 +57,24 @@
 
 	"rooms": [
 		{ "id": 0,
+		  "name": "Heartom Grave of Gods",
+		  "description": "Core of the tome and spawning point of player. Hearth + Tome >> Heartom. At center of the map is grave circeled with blood >> Grave of Gods",
 		  "file": "R0000.tmx",
 		  "sound track": "path to file or aasset" },
 		{ "id": 1,
-		  "file": "R0001.tmx",
+		  "name": "Old Basement",
+		  "description": "Small down-stairs basement, what is hidden bellow?",
+		  "file": "R0000 Hidden room.tmx",
 		  "sound track": "path to file or aasset" },
 		{ "id": 2,
-		  "file": "R0002.tmx",
-		  "sound track": "path to file or aasset" },
+		  "name": "",
+		  "description": "",
+		  "file": "",
+		  "sound track": "" },
 		{ "id": 3,
-		  "file": "R0003.tmx",
-		  "sound track": "path to file or aasset" },
+		  "name": "",
+		  "description": "",
+		  "file": "",
+		  "sound track": "" }
 	]
 }
