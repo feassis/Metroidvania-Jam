@@ -1,4 +1,4 @@
-extends Control
+extends HBoxContainer
 class_name LifeUI
 
 @export var text: Label
