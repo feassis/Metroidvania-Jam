@@ -1,14 +1,16 @@
-[gd_scene load_steps=162 format=3 uid="uid://8tjmltbshbhp"]
+[gd_scene load_steps=164 format=3 uid="uid://8tjmltbshbhp"]
 
 [ext_resource type="Script" path="res://Characters/Player Scenes/Player.gd" id="1_0260g"]
 [ext_resource type="Texture2D" uid="uid://ch0pa301bw7ev" path="res://Art/Player Animations/idle.png" id="2_7h83u"]
-[ext_resource type="PackedScene" uid="uid://dtq13hln8au3l" path="res://Characters/Player Scenes/pulse/pulse_controler.tscn" id="2_vkbci"]
 [ext_resource type="Texture2D" uid="uid://dxhy6t6git66l" path="res://Art/Player Animations/walk.png" id="3_eyd41"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/Health.gd" id="3_xq40h"]
 [ext_resource type="Texture2D" uid="uid://cpfkqa2h4d4f8" path="res://Art/Player Animations/mc_devour.png" id="4_ervkk"]
 [ext_resource type="Texture2D" uid="uid://cgxpbglrtl0wh" path="res://Art/Player Animations/mc_damage.png" id="4_qvkxd"]
 [ext_resource type="Texture2D" uid="uid://f72srgumiaum" path="res://Art/Player Animations/mc_death.png" id="5_g312j"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/DevourDetection.gd" id="6_pxm5j"]
+[ext_resource type="Script" path="res://Characters/Player Scenes/abilities/projectile/ProjectileAbility.gd" id="10_3qyor"]
+[ext_resource type="Script" path="res://Characters/Player Scenes/abilities/pulse/PulseAbility.gd" id="11_mf587"]
+[ext_resource type="Script" path="res://Characters/Player Scenes/abilities/reset/ResetAbility.gd" id="12_d4f03"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjfri"]
 radius = 4.0
@@ -1160,7 +1162,7 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxlvu"]
 size = Vector2(34, 30)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "UpDetection", "DownDetection", "RightDetection", "LeftDetection")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "currentAbility")]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
@@ -1169,12 +1171,7 @@ script = ExtResource("1_0260g")
 speed = 200.0
 animManager = NodePath("AnimatedSprite2D")
 health = NodePath("Health")
-timer = NodePath("")
-UpDetection = NodePath("")
-DownDetection = NodePath("")
-RightDetection = NodePath("")
-LeftDetection = NodePath("")
-pulseWavePrafab = ExtResource("2_vkbci")
+currentAbility = NodePath("Abilities/ResetAbility")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1230,6 +1227,24 @@ script = ExtResource("6_pxm5j")
 shape = SubResource("RectangleShape2D_lxlvu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="ProjectileAbility" type="Node" parent="Abilities"]
+script = ExtResource("10_3qyor")
+ability_name = "Projectile"
+cooldown = 5.0
+
+[node name="PulseAbility" type="Node" parent="Abilities"]
+script = ExtResource("11_mf587")
+knockbackSpeed = 140.0
+knockbackDuration = 5.0
+stunDuration = 5.0
+ability_name = "Pulse"
+cooldown = 5.0
+
+[node name="ResetAbility" type="Node" parent="Abilities"]
+script = ExtResource("12_d4f03")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

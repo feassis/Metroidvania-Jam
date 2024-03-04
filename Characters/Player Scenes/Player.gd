@@ -24,23 +24,16 @@ class_name Player
 @export var RightDetection : DevourDetection
 @export var LeftDetection : DevourDetection
 
-@export_category("Pulse")
-@export var pulseWavePrafab: PackedScene
-@export var pulseCooldown: float = 5
-@export var pulseStunDuration: float = 5
-@export var pulseKnockbackSpeed: float = 150
-@export var pulseKnockbackDuration: float = 0.4
+@export_category("Abilities")
+@export var unlockedAbilities : Array[BaseAbility] = []
+@export var currentAbility : BaseAbility
 
 @export_category("Reset Ability")
 @export var respawnPoint: Node2D
-@export var respawnCoolDown: float = 300
-var resetTimer: float = 0
 
 @export_category("DeathScreen")
 @export var deathScene: DeathScreen
 @export var fullDeathScene: DeathScreen
-
-var pulseTimer:float 
 
 var isDevouring : bool = false
 var isTakingDamage: bool = false
@@ -54,7 +47,6 @@ var currentMovement: MoveDir= MoveDir.Down
 var startPos
 var isDead: bool= false
 
-var currentSkill: Skill = Skill.Reset
 
 func _ready():
 	PlayAnimMove(Vector2(0,0))
@@ -72,9 +64,6 @@ func _physics_process(delta):
 	if devourModeTimer > 0:
 		devourModeTimer -= delta
 	
-	if pulseTimer > 0:
-		pulseTimer -= delta
-	
 	if isDevouring || isTakingDamage || isDead:
 		return
 	
@@ -82,31 +71,10 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("devour"):
 		DevourAction(delta)
-	if Input.is_action_just_pressed("skill"):
-		match currentSkill:
-			Skill.Pulse:
-				PulseSkill()
-			Skill.Reset:
-				ResetSkill()
 		
-func ResetSkill():
-	if resetTimer > 0:
-		return
-	
-	resetTimer = respawnCoolDown
-	position = respawnPoint.position
-
-func PulseSkill():
-	if pulseTimer > 0:
-		return
-	
-	pulseTimer = pulseCooldown
-	var pulseInstance : PulseWave = pulseWavePrafab.instantiate()
-	pulseInstance.stunDuration = pulseStunDuration
-	(pulseInstance as PulseWave).knockbackSpeed = pulseKnockbackSpeed
-	(pulseInstance as PulseWave).knockbackDuration = pulseKnockbackDuration
-	pulseInstance.position = position
-	get_tree().get_root().add_child(pulseInstance)
+	if Input.is_action_just_pressed("skill"):
+		if currentAbility:
+			currentAbility.use(self)
 
 func SubscribeHealthUI(ui : HealthUI):
 	health.SubscribeUI(ui)
@@ -245,7 +213,6 @@ func ControlCurrentMoveDirection(direction: Vector2):
 	
 
 enum MoveDir {Left, Right, Up, Down}
-enum Skill {Pulse, Reset}
 
 func PlayDeathAnimation():
 	isDead = true
