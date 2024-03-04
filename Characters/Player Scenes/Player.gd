@@ -36,6 +36,10 @@ class_name Player
 @export var respawnCoolDown: float = 300
 var resetTimer: float = 0
 
+@export_category("DeathScreen")
+@export var deathScene: DeathScreen
+@export var fullDeathScene: DeathScreen
+
 var pulseTimer:float 
 
 var isDevouring : bool = false
@@ -245,6 +249,7 @@ enum Skill {Pulse, Reset}
 
 func PlayDeathAnimation():
 	isDead = true
+	deathScene.Show()
 	match currentMovement:
 		MoveDir.Up:
 			animManager.play("death up")

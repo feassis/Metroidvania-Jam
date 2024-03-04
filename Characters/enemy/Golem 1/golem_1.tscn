@@ -1,6 +1,6 @@
 [gd_scene load_steps=46 format=3 uid="uid://ca0k546chyga6"]
 
-[ext_resource type="Texture2D" uid="uid://dqgj0sh3fbkf2" path="res://Placeholder Assets/Girl-Sheet.png" id="1_e6q7c"]
+[ext_resource type="Texture2D" uid="uid://dqgj0sh3fbkf2" path="res://placeholder assets/Girl-Sheet.png" id="1_e6q7c"]
 [ext_resource type="Script" path="res://Characters/enemy/Golem 1/Enemy.gd" id="1_vbysw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pa5op"]
