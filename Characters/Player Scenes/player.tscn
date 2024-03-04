@@ -1169,11 +1169,11 @@ script = ExtResource("1_0260g")
 speed = 200.0
 animManager = NodePath("AnimatedSprite2D")
 health = NodePath("Health")
-timer = NodePath("Timer")
-UpDetection = NodePath("Devour Detection/UP")
-DownDetection = NodePath("Devour Detection/Down")
-RightDetection = NodePath("Devour Detection/Right")
-LeftDetection = NodePath("Devour Detection/Left")
+timer = NodePath("")
+UpDetection = NodePath("")
+DownDetection = NodePath("")
+RightDetection = NodePath("")
+LeftDetection = NodePath("")
 pulseWavePrafab = ExtResource("2_vkbci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1228,6 +1228,8 @@ script = ExtResource("6_pxm5j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Devour Detection/Left"]
 shape = SubResource("RectangleShape2D_lxlvu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
