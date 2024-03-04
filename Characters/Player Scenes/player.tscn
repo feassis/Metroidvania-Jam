@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Characters/Player Scenes/Player.gd" id="1_0260g"]
 [ext_resource type="Texture2D" uid="uid://ch0pa301bw7ev" path="res://Art/Player Animations/idle.png" id="2_7h83u"]
-[ext_resource type="PackedScene" uid="uid://dtq13hln8au3l" path="res://Characters/Player Scenes/abilities/pulse/pulse_controler.tscn" id="2_vkbci"]
 [ext_resource type="Texture2D" uid="uid://dxhy6t6git66l" path="res://Art/Player Animations/walk.png" id="3_eyd41"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/Health.gd" id="3_xq40h"]
 [ext_resource type="Texture2D" uid="uid://cpfkqa2h4d4f8" path="res://Art/Player Animations/mc_devour.png" id="4_ervkk"]
@@ -11,6 +10,7 @@
 [ext_resource type="Script" path="res://Characters/Player Scenes/DevourDetection.gd" id="6_pxm5j"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/projectile/ProjectileAbility.gd" id="10_3qyor"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/pulse/PulseAbility.gd" id="11_mf587"]
+[ext_resource type="Script" path="res://Characters/Player Scenes/abilities/reset/ResetAbility.gd" id="12_d4f03"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjfri"]
 radius = 4.0
@@ -1171,8 +1171,7 @@ script = ExtResource("1_0260g")
 speed = 200.0
 animManager = NodePath("AnimatedSprite2D")
 health = NodePath("Health")
-pulseWavePrafab = ExtResource("2_vkbci")
-currentAbility = NodePath("Abilities/PulseAbility")
+currentAbility = NodePath("Abilities/ResetAbility")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1243,6 +1242,9 @@ knockbackDuration = 5.0
 stunDuration = 5.0
 ability_name = "Pulse"
 cooldown = 5.0
+
+[node name="ResetAbility" type="Node" parent="Abilities"]
+script = ExtResource("12_d4f03")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

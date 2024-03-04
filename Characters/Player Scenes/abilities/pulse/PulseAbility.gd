@@ -2,7 +2,6 @@ extends BaseAbility
 
 const PULSE_CONTROLER = preload("res://Characters/Player Scenes/abilities/pulse/pulse_controler.tscn")
 
-
 @export var knockbackSpeed : float
 @export var knockbackDuration : float
 @export var stunDuration : float
