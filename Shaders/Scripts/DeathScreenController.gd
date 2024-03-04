@@ -1,4 +1,5 @@
 extends Control
+class_name DeathScreen
 
 @export var blurChangeTime : float
 @export var opacityChangeTime : float
@@ -19,6 +20,7 @@ func _ready():
 	_textNode = get_node("YouDiedTextLabel")
 
 func Show():
+	print("Death Show Called")
 	_node.visible = true
 	_blurNode.Init(blurChangeTime)
 	_noiseNode.Init(opacityChangeTime, darknessChangeTime)
