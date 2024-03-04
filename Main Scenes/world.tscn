@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=33 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
@@ -7,16 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://ca0k546chyga6" path="res://Characters/enemy/Golem 1/golem_1.tscn" id="6_vrq5a"]
 [ext_resource type="PackedScene" uid="uid://3hlhaqtubtig" path="res://Characters/enemy/Golem 2/golem_2.tscn" id="7_f31sn"]
 [ext_resource type="PackedScene" uid="uid://fuu4wtvork38" path="res://UI/Life/LifeUI.tscn" id="7_trhml"]
+[ext_resource type="Script" path="res://Shaders/Scripts/DeathScreenController.gd" id="8_kkddk"]
 [ext_resource type="PackedScene" uid="uid://dsy253qu08cyr" path="res://Pick Ups Scenes/extra_unit_pick_up.tscn" id="9_3megw"]
+[ext_resource type="Shader" path="res://Shaders/RadialBlur.gdshader" id="9_i38n1"]
+[ext_resource type="Script" path="res://Shaders/Scripts/Blur.gd" id="10_0t4fc"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="10_ulmfq"]
 [ext_resource type="PackedScene" uid="uid://b0kluyxmvfw6l" path="res://Pick Ups Scenes/unit_overdrive.tscn" id="10_w8ocs"]
-[ext_resource type="PackedScene" uid="uid://jhmgusrj40hq" path="res://Characters/respawn_point.tscn" id="11_8t1iy"]
-[ext_resource type="Script" path="res://Shaders/Scripts/DeathScreenController.gd" id="11_wo5pa"]
-[ext_resource type="Shader" path="res://Shaders/RadialBlur.gdshader" id="12_0c2yx"]
-[ext_resource type="Script" path="res://Shaders/Scripts/Blur.gd" id="13_l6mbe"]
-[ext_resource type="Shader" path="res://Shaders/StaticNoise.gdshader" id="14_r24th"]
-[ext_resource type="Script" path="res://Shaders/Scripts/StaticNoise.gd" id="15_ymj1q"]
-[ext_resource type="Script" path="res://Shaders/Scripts/YouDiedTextLabelController.gd" id="16_kk3kv"]
+[ext_resource type="Shader" path="res://Shaders/StaticNoise.gdshader" id="11_0udm2"]
+[ext_resource type="Script" path="res://Shaders/Scripts/YouDiedTextLabelController.gd" id="11_ebcpe"]
+[ext_resource type="Script" path="res://Shaders/Scripts/StaticNoise.gd" id="12_yuwyc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
 vertices = PackedVector2Array(170, 263, 201, 246, 748, 130, 746, 423, 243, 338, 443, 557, 243, 384, 134, 246, 73, 263, 38, 515, 186, 387, 165, 325, 186, 335, -71, 333, 65, 324, 693, -52, 197, 170, 304, -78, 81, -57, 139, 171, 27, 10, 102, 174, 39, 170, 40, 245, 98, 245)
@@ -25,70 +24,70 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(74, -72, 15, 1, -88, 33
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 15.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnvs1"]
-shader = ExtResource("12_0c2yx")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6maw"]
+shader = ExtResource("9_i38n1")
 shader_parameter/blur_center = Vector2(0.5, 0.5)
 shader_parameter/blur_power = 0.0
 shader_parameter/sampling_count = 5
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_on040"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_4fomc"]
 
-[sub_resource type="Curve" id="Curve_8wjlo"]
+[sub_resource type="Curve" id="Curve_7r85j"]
 max_value = 5.0
 _data = [Vector2(0.00526316, 0.252747), 0.0, 21.078, 0, 0, Vector2(0.389474, 5), 0.0, 0.0, 0, 0, Vector2(0.787129, 1.48352), 3.81525, 3.81525, 0, 0, Vector2(1, 0), -3.05548, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_talgv"]
-shader = ExtResource("14_r24th")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eresy"]
+shader = ExtResource("11_0udm2")
 shader_parameter/u_resolution = Vector2(4, 4)
 shader_parameter/distortion = 1.0
 shader_parameter/dark_value = 0.2
 shader_parameter/opacity = 0.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_egptn"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_wbbqq"]
 
-[sub_resource type="Curve" id="Curve_01g1w"]
+[sub_resource type="Curve" id="Curve_1h510"]
 _data = [Vector2(0, 0.054945), 0.0, 3.51648, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.694737, 1), -0.0509251, -0.0509251, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="Curve" id="Curve_dk2ii"]
+[sub_resource type="Curve" id="Curve_k1xmo"]
 min_value = 0.2
 _data = [Vector2(0, 0.226374), 0.0, -0.434287, 0, 0, Vector2(0.505263, 1), 0.161646, 0.161646, 0, 0, Vector2(0.678947, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.214144, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iuotu"]
-shader = ExtResource("12_0c2yx")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81j7a"]
+shader = ExtResource("9_i38n1")
 shader_parameter/blur_center = Vector2(0.5, 0.5)
 shader_parameter/blur_power = 0.0
 shader_parameter/sampling_count = 5
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_l577a"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_tvyes"]
 
-[sub_resource type="Curve" id="Curve_iy817"]
+[sub_resource type="Curve" id="Curve_8e0ts"]
 max_value = 5.0
 _data = [Vector2(0.00526316, 0.252747), 0.0, 21.078, 0, 0, Vector2(0.389474, 5), 0.0, 0.0, 0, 0, Vector2(0.816832, 2.25275), 4.12245, 4.12245, 0, 0, Vector2(1, 0), -3.05548, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xptre"]
-shader = ExtResource("14_r24th")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tt1tg"]
+shader = ExtResource("11_0udm2")
 shader_parameter/u_resolution = Vector2(4, 4)
 shader_parameter/distortion = 1.0
 shader_parameter/dark_value = 0.2
 shader_parameter/opacity = 0.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_8desj"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_0lh61"]
 
-[sub_resource type="Curve" id="Curve_xyjie"]
+[sub_resource type="Curve" id="Curve_nw666"]
 _data = [Vector2(0, 0.054945), 0.0, 7.69231, 0, 0, Vector2(0.436842, 1), 0.119309, 0.119309, 0, 0, Vector2(0.763158, 1), -0.0509251, -0.0509251, 0, 0, Vector2(1, 0), -4.6671, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="Curve" id="Curve_jtpvf"]
+[sub_resource type="Curve" id="Curve_gqrkr"]
 min_value = 0.2
 _data = [Vector2(0, 0.226374), 0.0, 6.82051, 0, 0, Vector2(0.284211, 1), 0.161646, 0.161646, 0, 0, Vector2(0.678947, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.2), 0.214144, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0d6f"]
-shader = ExtResource("14_r24th")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6s4s"]
+shader = ExtResource("11_0udm2")
 shader_parameter/u_resolution = Vector2(3, 3)
 shader_parameter/distortion = 1.0
 shader_parameter/dark_value = 0.2
@@ -101,11 +100,8 @@ y_sort_enabled = true
 position = Vector2(303, 169)
 layer_1/tile_data = PackedInt32Array(327681, 1441798, 17, 327701, 1572870, 0, 786438, 1441798, 11, 786454, 917510, 5, 196593, 1179654, 10, 196599, 1179654, 10, 524276, 1179654, 5, 720890, 917510, 5, -327676, 1835014, 7)
 
-[node name="Player" parent="." node_paths=PackedStringArray("respawnPoint", "deathScene", "fullDeathScene") instance=ExtResource("10_ulmfq")]
+[node name="Player" parent="." instance=ExtResource("10_ulmfq")]
 position = Vector2(201, 105)
-respawnPoint = NodePath("../RespawnPoint")
-deathScene = NodePath("../DeathScreenShowcase/DeathScreen")
-fullDeathScene = NodePath("../DeathScreenShowcase/FullDeathScreen")
 
 [node name="HealthPickup" parent="." instance=ExtResource("5_2quqk")]
 position = Vector2(179, 149)
@@ -137,34 +133,25 @@ offset_left = 1145.0
 offset_right = 1145.0
 player = NodePath("../../Player")
 
-[node name="Golem 2" parent="." instance=ExtResource("7_f31sn")]
-position = Vector2(587, 222)
-
-[node name="Extra Unit Pick UP" parent="." instance=ExtResource("9_3megw")]
-position = Vector2(128, 58)
-
-[node name="HealthPickup2" parent="." instance=ExtResource("5_2quqk")]
-position = Vector2(226, 39)
-
-[node name="UnitOverdrive" parent="." instance=ExtResource("10_w8ocs")]
-position = Vector2(169, 28)
-
-[node name="DeathScreenShowcase" type="Node2D" parent="."]
-z_index = 8
-
-[node name="DeathScreen" type="Control" parent="DeathScreenShowcase"]
+[node name="FullScreenVfx" type="Control" parent="GUI"]
 z_index = 101
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("11_wo5pa")
+
+[node name="DeathScreen" type="Control" parent="GUI/FullScreenVfx"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_kkddk")
 blurChangeTime = 5.0
 opacityChangeTime = 5.0
 darknessChangeTime = 5.0
 
-[node name="Blur" type="TextureRect" parent="DeathScreenShowcase/DeathScreen"]
-material = SubResource("ShaderMaterial_fnvs1")
+[node name="Blur" type="TextureRect" parent="GUI/FullScreenVfx/DeathScreen"]
+material = SubResource("ShaderMaterial_t6maw")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -175,12 +162,12 @@ offset_right = 1992.0
 offset_bottom = 1057.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_on040")
-script = ExtResource("13_l6mbe")
-curve = SubResource("Curve_8wjlo")
+texture = SubResource("CanvasTexture_4fomc")
+script = ExtResource("10_0t4fc")
+curve = SubResource("Curve_7r85j")
 
-[node name="StaticNoise" type="TextureRect" parent="DeathScreenShowcase/DeathScreen"]
-material = SubResource("ShaderMaterial_talgv")
+[node name="StaticNoise" type="TextureRect" parent="GUI/FullScreenVfx/DeathScreen"]
+material = SubResource("ShaderMaterial_eresy")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,14 +176,14 @@ offset_right = 2280.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_egptn")
-script = ExtResource("15_ymj1q")
-opacityCurve = SubResource("Curve_01g1w")
-darknessCurve = SubResource("Curve_dk2ii")
+texture = SubResource("CanvasTexture_wbbqq")
+script = ExtResource("12_yuwyc")
+opacityCurve = SubResource("Curve_1h510")
+darknessCurve = SubResource("Curve_k1xmo")
 
-[node name="FullDeathScreen" type="Control" parent="DeathScreenShowcase"]
-z_index = 101
-layout_mode = 3
+[node name="FullDeathScreen" type="Control" parent="GUI/FullScreenVfx"]
+visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -206,14 +193,14 @@ offset_right = 311.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("11_wo5pa")
+script = ExtResource("8_kkddk")
 blurChangeTime = 8.0
 opacityChangeTime = 8.0
 darknessChangeTime = 8.0
 fullDeath = true
 
-[node name="Blur" type="TextureRect" parent="DeathScreenShowcase/FullDeathScreen"]
-material = SubResource("ShaderMaterial_iuotu")
+[node name="Blur" type="TextureRect" parent="GUI/FullScreenVfx/FullDeathScreen"]
+material = SubResource("ShaderMaterial_81j7a")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -224,12 +211,12 @@ offset_right = 1992.0
 offset_bottom = 1057.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_l577a")
-script = ExtResource("13_l6mbe")
-curve = SubResource("Curve_iy817")
+texture = SubResource("CanvasTexture_tvyes")
+script = ExtResource("10_0t4fc")
+curve = SubResource("Curve_8e0ts")
 
-[node name="StaticNoise" type="TextureRect" parent="DeathScreenShowcase/FullDeathScreen"]
-material = SubResource("ShaderMaterial_xptre")
+[node name="StaticNoise" type="TextureRect" parent="GUI/FullScreenVfx/FullDeathScreen"]
+material = SubResource("ShaderMaterial_tt1tg")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -238,14 +225,14 @@ offset_right = 2280.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_8desj")
-script = ExtResource("15_ymj1q")
-opacityCurve = SubResource("Curve_xyjie")
-darknessCurve = SubResource("Curve_jtpvf")
+texture = SubResource("CanvasTexture_0lh61")
+script = ExtResource("12_yuwyc")
+opacityCurve = SubResource("Curve_nw666")
+darknessCurve = SubResource("Curve_gqrkr")
 
-[node name="YouDiedTextLabel" type="RichTextLabel" parent="DeathScreenShowcase/FullDeathScreen"]
+[node name="YouDiedTextLabel" type="RichTextLabel" parent="GUI/FullScreenVfx/FullDeathScreen"]
 visible = false
-material = SubResource("ShaderMaterial_u0d6f")
+material = SubResource("ShaderMaterial_n6s4s")
 clip_contents = false
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 1
@@ -266,7 +253,16 @@ scroll_active = false
 tab_size = 1
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
-script = ExtResource("16_kk3kv")
+script = ExtResource("11_ebcpe")
 
-[node name="RespawnPoint" parent="." instance=ExtResource("11_8t1iy")]
-position = Vector2(146, 57)
+[node name="Golem 2" parent="." instance=ExtResource("7_f31sn")]
+position = Vector2(587, 222)
+
+[node name="Extra Unit Pick UP" parent="." instance=ExtResource("9_3megw")]
+position = Vector2(128, 58)
+
+[node name="HealthPickup2" parent="." instance=ExtResource("5_2quqk")]
+position = Vector2(226, 39)
+
+[node name="UnitOverdrive" parent="." instance=ExtResource("10_w8ocs")]
+position = Vector2(169, 28)

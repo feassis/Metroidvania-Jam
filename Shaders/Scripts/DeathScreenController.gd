@@ -17,7 +17,8 @@ func _ready():
 	_node = get_node(".")
 	_blurNode = get_node("Blur")
 	_noiseNode = get_node("StaticNoise")
-	_textNode = get_node("YouDiedTextLabel")
+	if(fullDeath):
+		_textNode = get_node("YouDiedTextLabel")
 
 func Show():
 	print("Death Show Called")

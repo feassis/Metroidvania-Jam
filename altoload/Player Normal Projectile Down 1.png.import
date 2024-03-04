@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cref6v5e7jyk"
-path="res://.godot/imported/TX Tileset Stone Ground.png-ce919c68946a0145df9caccd6b4615d9.ctex"
+uid="uid://lsvbgn2ep8bl"
+path="res://.godot/imported/Player Normal Projectile Down 1.png-bc263f44ac9c78a13233ce5a119d1d30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Placeholder Assets/Pixel Art Top Down - Basic/Texture/TX Tileset Stone Ground.png"
-dest_files=["res://.godot/imported/TX Tileset Stone Ground.png-ce919c68946a0145df9caccd6b4615d9.ctex"]
+source_file="res://altoload/Player Normal Projectile Down 1.png"
+dest_files=["res://.godot/imported/Player Normal Projectile Down 1.png-bc263f44ac9c78a13233ce5a119d1d30.ctex"]
 
 [params]
 
