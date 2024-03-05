@@ -1162,7 +1162,7 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxlvu"]
 size = Vector2(34, 30)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "UpDetection", "DownDetection", "RightDetection", "LeftDetection", "unlockedAbilities")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "UpDetection", "DownDetection", "RightDetection", "LeftDetection", "normalAbility", "resetAbility", "pulseAbility", "bombAbility")]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
@@ -1176,7 +1176,10 @@ UpDetection = NodePath("Devour Detection/UP")
 DownDetection = NodePath("Devour Detection/Down")
 RightDetection = NodePath("Devour Detection/Right")
 LeftDetection = NodePath("Devour Detection/Left")
-unlockedAbilities = [NodePath("Abilities/ProjectileAbility"), NodePath("Abilities/PulseAbility"), NodePath("Abilities/ResetAbility")]
+normalAbility = NodePath("Abilities/ProjectileAbility")
+resetAbility = NodePath("Abilities/ResetAbility")
+pulseAbility = NodePath("Abilities/PulseAbility")
+bombAbility = NodePath("Abilities/ProjectileAbility")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1253,11 +1256,19 @@ script = ExtResource("12_d4f03")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Devour Detection/UP" to="Devour Detection/UP" method="_on_area_entered"]
+[connection signal="area_exited" from="Devour Detection/UP" to="Devour Detection/UP" method="_on_area_exited"]
 [connection signal="body_entered" from="Devour Detection/UP" to="Devour Detection/UP" method="_on_body_entered"]
 [connection signal="body_exited" from="Devour Detection/UP" to="Devour Detection/UP" method="_on_body_exited"]
+[connection signal="area_entered" from="Devour Detection/Down" to="Devour Detection/Down" method="_on_area_entered"]
+[connection signal="area_exited" from="Devour Detection/Down" to="Devour Detection/Down" method="_on_area_exited"]
 [connection signal="body_entered" from="Devour Detection/Down" to="Devour Detection/Down" method="_on_body_entered"]
 [connection signal="body_exited" from="Devour Detection/Down" to="Devour Detection/Down" method="_on_body_exited"]
+[connection signal="area_entered" from="Devour Detection/Right" to="Devour Detection/Right" method="_on_area_entered"]
+[connection signal="area_exited" from="Devour Detection/Right" to="Devour Detection/Right" method="_on_area_exited"]
 [connection signal="body_entered" from="Devour Detection/Right" to="Devour Detection/Right" method="_on_body_entered"]
 [connection signal="body_exited" from="Devour Detection/Right" to="Devour Detection/Right" method="_on_body_exited"]
+[connection signal="area_entered" from="Devour Detection/Left" to="Devour Detection/Left" method="_on_area_entered"]
+[connection signal="area_exited" from="Devour Detection/Left" to="Devour Detection/Left" method="_on_area_exited"]
 [connection signal="body_entered" from="Devour Detection/Left" to="Devour Detection/Left" method="_on_body_entered"]
 [connection signal="body_exited" from="Devour Detection/Left" to="Devour Detection/Left" method="_on_body_exited"]

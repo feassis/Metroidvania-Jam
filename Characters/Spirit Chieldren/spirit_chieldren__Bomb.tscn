@@ -1,0 +1,161 @@
+[gd_scene load_steps=21 format=3 uid="uid://cbdlaejk02cl2"]
+
+[ext_resource type="Script" path="res://Characters/Spirit Chieldren/spirit_chieldren___base.gd" id="1_5umg2"]
+[ext_resource type="Texture2D" uid="uid://dar52x82v2b7d" path="res://Art/Spirit Chieldren/spitit_children_idle.png" id="2_b7coc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hp8io"]
+radius = 9.05539
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qjh3"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(0, 320, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odfcw"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(20, 320, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbmlh"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(40, 320, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjkv6"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(60, 320, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8b5n"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(0, 380, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d55c"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(20, 380, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n65xd"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(40, 380, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g2qf"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(60, 380, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viqpw"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(0, 360, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaix7"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(20, 360, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab1ko"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(40, 360, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hptp4"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(60, 360, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r458"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(0, 340, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teay0"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(20, 340, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo706"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(40, 340, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcw48"]
+atlas = ExtResource("2_b7coc")
+region = Rect2(60, 340, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ehr7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qjh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odfcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbmlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjkv6")
+}],
+"loop": true,
+"name": &"idle down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8b5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d55c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n65xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g2qf")
+}],
+"loop": true,
+"name": &"idle left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viqpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaix7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab1ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hptp4")
+}],
+"loop": true,
+"name": &"idle right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r458")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teay0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo706")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcw48")
+}],
+"loop": true,
+"name": &"idle up",
+"speed": 5.0
+}]
+
+[node name="SpiritChieldren - Bomb" type="Area2D" node_paths=PackedStringArray("animManager")]
+z_index = 1
+position = Vector2(0, -10)
+collision_mask = 7
+script = ExtResource("1_5umg2")
+animManager = NodePath("AnimatedSprite2D")
+skill = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hp8io")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6ehr7")
+animation = &"idle down"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

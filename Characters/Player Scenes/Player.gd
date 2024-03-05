@@ -26,7 +26,12 @@ class_name Player
 
 @export_category("Abilities")
 @export var unlockedAbilities : Array[BaseAbility] = []
+@export var normalAbility : BaseAbility
+@export var resetAbility : BaseAbility
+@export var pulseAbility : BaseAbility
+@export var bombAbility : BaseAbility
 var currentSkillIndex: int = 0
+
 
 @export_category("Reset Ability")
 @export var respawnPoint: Node2D
@@ -75,6 +80,9 @@ func _physics_process(delta):
 		DevourAction(delta)
 		
 	if Input.is_action_just_pressed("skill"):
+		if len(unlockedAbilities) == 0:
+			return
+		
 		if unlockedAbilities[GetSkillIndex()]:
 			unlockedAbilities[GetSkillIndex()].use(self)
 
@@ -144,16 +152,35 @@ func PlayDamageAnim():
 func Devour():
 	match currentMovement:
 		MoveDir.Up:
-			UpDetection.Devour()
+			UpDetection.Devour(self)
 		MoveDir.Down:
-			DownDetection.Devour()
+			DownDetection.Devour(self)
 		MoveDir.Left:
-			LeftDetection.Devour()
+			LeftDetection.Devour(self)
 		MoveDir.Right:
-			RightDetection.Devour()
+			RightDetection.Devour(self)
 			
 	isDevouring = false
 	
+
+func UnlockSkill(skill : Skill):
+	match skill:
+		Skill.NormalAttack:
+			if unlockedAbilities.find(normalAbility) != -1:
+				return
+			unlockedAbilities.append(normalAbility)
+		Skill.Reset:
+			if unlockedAbilities.find(resetAbility)  != -1:
+				return
+			unlockedAbilities.append(resetAbility)
+		Skill.Pulse:
+			if unlockedAbilities.find(pulseAbility) != -1:
+				return
+			unlockedAbilities.append(pulseAbility)
+		Skill.Bomb:
+			if unlockedAbilities.find(bombAbility) != -1:
+				return
+			unlockedAbilities.append(bombAbility)
 
 func PlayAnimDevour():
 	match currentMovement:
@@ -215,9 +242,9 @@ func ControlCurrentMoveDirection(direction: Vector2):
 		currentMovement = MoveDir.Left
 	elif direction.x > 0:
 		currentMovement = MoveDir.Right
-	
 
 enum MoveDir {Left, Right, Up, Down}
+enum Skill {NormalAttack, Reset, Pulse, Bomb}
 
 func HandleSkillChange():
 	if Input.is_action_just_pressed("next skill"):
