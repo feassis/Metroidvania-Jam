@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b6ao504ibchgr"]
+[gd_scene load_steps=38 format=3 uid="uid://b6ao504ibchgr"]
 
 [ext_resource type="PackedScene" uid="uid://12uoy08anv40" path="res://TileMap/tile_map.tscn" id="1_o7rro"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="3_lb5xp"]
@@ -17,7 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://jhmgusrj40hq" path="res://Characters/respawn_point.tscn" id="11_8t1iy"]
 [ext_resource type="Script" path="res://Shaders/Scripts/YouDiedTextLabelController.gd" id="11_ebcpe"]
 [ext_resource type="Script" path="res://Shaders/Scripts/StaticNoise.gd" id="12_yuwyc"]
-[ext_resource type="PackedScene" uid="uid://cr7q4dwqouxt1" path="res://TileMap/r_0000.tscn" id="18_tsh2y"]
+[ext_resource type="PackedScene" uid="uid://iy25kvueey3m" path="res://Characters/Spirit Chieldren/spirit_chieldren_NormalAttack.tscn" id="18_s8acv"]
+[ext_resource type="PackedScene" uid="uid://cbdlaejk02cl2" path="res://Characters/Spirit Chieldren/spirit_chieldren__Bomb.tscn" id="19_efn1i"]
+[ext_resource type="PackedScene" uid="uid://dpdellfka4qq2" path="res://Characters/Spirit Chieldren/spirit_chieldren__Pulse.tscn" id="20_gchsp"]
+[ext_resource type="PackedScene" uid="uid://chgloyvghceaq" path="res://Characters/Spirit Chieldren/spirit_chieldren__Reset.tscn" id="21_xa3gh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_iqq27"]
 vertices = PackedVector2Array(170, 263, 201, 246, 748, 130, 746, 423, 243, 338, 443, 557, 243, 384, 134, 246, 73, 263, 38, 515, 186, 387, 165, 325, 186, 335, -71, 333, 65, 324, 693, -52, 197, 170, 304, -78, 81, -57, 139, 171, 27, 10, 102, 174, 39, 170, 40, 245, 98, 245)
@@ -99,12 +102,10 @@ shader_parameter/opacity = 1.0
 y_sort_enabled = true
 
 [node name="TileMap" parent="." instance=ExtResource("1_o7rro")]
-visible = false
 position = Vector2(303, 169)
 layer_1/tile_data = PackedInt32Array(327681, 1441798, 17, 327701, 1572870, 0, 786438, 1441798, 11, 786454, 917510, 5, 196593, 1179654, 10, 196599, 1179654, 10, 524276, 1179654, 5, 720890, 917510, 5, -327676, 1835014, 7)
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawnPoint", "deathScene", "fullDeathScene") instance=ExtResource("10_ulmfq")]
-y_sort_enabled = false
 position = Vector2(201, 105)
 respawnPoint = NodePath("../RespawnPoint")
 deathScene = NodePath("../CanvasLayer/GUI/FullScreenVfx/DeathScreen")
@@ -286,5 +287,14 @@ position = Vector2(169, 28)
 [node name="RespawnPoint" parent="." instance=ExtResource("11_8t1iy")]
 position = Vector2(283, 41)
 
-[node name="R0000" parent="." instance=ExtResource("18_tsh2y")]
-position = Vector2(-435, -636)
+[node name="SpiritChieldren - NormalAttack" parent="." instance=ExtResource("18_s8acv")]
+position = Vector2(104, 27)
+
+[node name="SpiritChieldren - Bomb" parent="." instance=ExtResource("19_efn1i")]
+position = Vector2(197, 21)
+
+[node name="SpiritChieldren - ulse" parent="." instance=ExtResource("20_gchsp")]
+position = Vector2(304, 31)
+
+[node name="SpiritChieldren - Reset" parent="." instance=ExtResource("21_xa3gh")]
+position = Vector2(298, 80)

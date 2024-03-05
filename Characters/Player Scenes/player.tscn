@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://8tjmltbshbhp"]
+[gd_scene load_steps=164 format=3 uid="uid://8tjmltbshbhp"]
 
 [ext_resource type="Script" path="res://Characters/Player Scenes/Player.gd" id="1_0260g"]
 [ext_resource type="Texture2D" uid="uid://ch0pa301bw7ev" path="res://Art/Player Animations/idle.png" id="2_7h83u"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/projectile/ProjectileAbility.gd" id="10_3qyor"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/pulse/PulseAbility.gd" id="11_mf587"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/reset/ResetAbility.gd" id="12_d4f03"]
-[ext_resource type="Script" path="res://Characters/Player Scenes/abilities/bomb/BombAbility.gd" id="12_i1e1v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjfri"]
 radius = 4.0
@@ -481,37 +480,37 @@ region = Rect2(160, 160, 80, 80)
 atlas = ExtResource("2_7h83u")
 region = Rect2(240, 160, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_usbrb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp0dh"]
 atlas = ExtResource("3_eyd41")
-region = Rect2(0, 160, 80, 80)
+region = Rect2(0, 0, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qyf4n"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhdrs"]
 atlas = ExtResource("3_eyd41")
-region = Rect2(80, 160, 80, 80)
+region = Rect2(80, 0, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_02gi5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaw7n"]
 atlas = ExtResource("3_eyd41")
-region = Rect2(160, 160, 80, 80)
+region = Rect2(160, 0, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmoca"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd6pc"]
 atlas = ExtResource("3_eyd41")
-region = Rect2(240, 160, 80, 80)
+region = Rect2(240, 0, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfber"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wylb3"]
 atlas = ExtResource("3_eyd41")
-region = Rect2(320, 160, 80, 80)
+region = Rect2(320, 0, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ijxb6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdi27"]
 atlas = ExtResource("3_eyd41")
-region = Rect2(400, 160, 80, 80)
+region = Rect2(400, 0, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vite"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbm6o"]
 atlas = ExtResource("3_eyd41")
-region = Rect2(480, 160, 80, 80)
+region = Rect2(480, 0, 80, 80)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dm55c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7f5a"]
 atlas = ExtResource("3_eyd41")
-region = Rect2(560, 160, 80, 80)
+region = Rect2(560, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfnb5"]
 atlas = ExtResource("2_7h83u")
@@ -1036,28 +1035,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_usbrb")
+"texture": SubResource("AtlasTexture_wp0dh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qyf4n")
+"texture": SubResource("AtlasTexture_dhdrs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_02gi5")
+"texture": SubResource("AtlasTexture_aaw7n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nmoca")
+"texture": SubResource("AtlasTexture_bd6pc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hfber")
+"texture": SubResource("AtlasTexture_wylb3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ijxb6")
+"texture": SubResource("AtlasTexture_sdi27")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3vite")
+"texture": SubResource("AtlasTexture_tbm6o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dm55c")
+"texture": SubResource("AtlasTexture_x7f5a")
 }],
 "loop": true,
 "name": &"front walk",
@@ -1163,7 +1162,7 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxlvu"]
 size = Vector2(34, 30)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "UpDetection", "DownDetection", "RightDetection", "LeftDetection", "unlockedAbilities")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "UpDetection", "DownDetection", "RightDetection", "LeftDetection", "normalAbility", "resetAbility", "pulseAbility", "bombAbility")]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
@@ -1177,7 +1176,10 @@ UpDetection = NodePath("Devour Detection/UP")
 DownDetection = NodePath("Devour Detection/Down")
 RightDetection = NodePath("Devour Detection/Right")
 LeftDetection = NodePath("Devour Detection/Left")
-unlockedAbilities = [NodePath("Abilities/ProjectileAbility"), NodePath("Abilities/PulseAbility"), NodePath("Abilities/ResetAbility"), NodePath("Abilities/BombAbility")]
+normalAbility = NodePath("Abilities/ProjectileAbility")
+resetAbility = NodePath("Abilities/ResetAbility")
+pulseAbility = NodePath("Abilities/PulseAbility")
+bombAbility = NodePath("Abilities/ProjectileAbility")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1187,7 +1189,7 @@ shape = SubResource("CapsuleShape2D_tjfri")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_3nm1m")
-animation = &"front walk"
+animation = &"death down"
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource("3_xq40h")
@@ -1251,17 +1253,23 @@ cooldown = 5.0
 
 [node name="ResetAbility" type="Node" parent="Abilities"]
 script = ExtResource("12_d4f03")
-
-[node name="BombAbility" type="Node" parent="Abilities"]
-script = ExtResource("12_i1e1v")
+cooldown = 300.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Devour Detection/UP" to="Devour Detection/UP" method="_on_area_entered"]
+[connection signal="area_exited" from="Devour Detection/UP" to="Devour Detection/UP" method="_on_area_exited"]
 [connection signal="body_entered" from="Devour Detection/UP" to="Devour Detection/UP" method="_on_body_entered"]
 [connection signal="body_exited" from="Devour Detection/UP" to="Devour Detection/UP" method="_on_body_exited"]
+[connection signal="area_entered" from="Devour Detection/Down" to="Devour Detection/Down" method="_on_area_entered"]
+[connection signal="area_exited" from="Devour Detection/Down" to="Devour Detection/Down" method="_on_area_exited"]
 [connection signal="body_entered" from="Devour Detection/Down" to="Devour Detection/Down" method="_on_body_entered"]
 [connection signal="body_exited" from="Devour Detection/Down" to="Devour Detection/Down" method="_on_body_exited"]
+[connection signal="area_entered" from="Devour Detection/Right" to="Devour Detection/Right" method="_on_area_entered"]
+[connection signal="area_exited" from="Devour Detection/Right" to="Devour Detection/Right" method="_on_area_exited"]
 [connection signal="body_entered" from="Devour Detection/Right" to="Devour Detection/Right" method="_on_body_entered"]
 [connection signal="body_exited" from="Devour Detection/Right" to="Devour Detection/Right" method="_on_body_exited"]
+[connection signal="area_entered" from="Devour Detection/Left" to="Devour Detection/Left" method="_on_area_entered"]
+[connection signal="area_exited" from="Devour Detection/Left" to="Devour Detection/Left" method="_on_area_exited"]
 [connection signal="body_entered" from="Devour Detection/Left" to="Devour Detection/Left" method="_on_body_entered"]
 [connection signal="body_exited" from="Devour Detection/Left" to="Devour Detection/Left" method="_on_body_exited"]
