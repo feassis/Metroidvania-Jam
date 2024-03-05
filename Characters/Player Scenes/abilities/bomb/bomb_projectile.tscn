@@ -14,7 +14,7 @@ point_count = 9
 script = ExtResource("2_v6qmo")
 bounce_curve = SubResource("Curve_fh1da")
 max_height = 40.0
-max_collision_height = 20.0
+max_collision_height = 15.0
 speed = 120.0
 max_range = 150.0
 
