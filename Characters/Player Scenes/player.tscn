@@ -1253,6 +1253,7 @@ cooldown = 5.0
 
 [node name="ResetAbility" type="Node" parent="Abilities"]
 script = ExtResource("12_d4f03")
+cooldown = 300.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
