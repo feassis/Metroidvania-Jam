@@ -26,7 +26,7 @@ class_name Player
 
 @export_category("Abilities")
 @export var unlockedAbilities : Array[BaseAbility] = []
-var currentSkillIndex: int = 0
+var currentSkillIndex: int = 3
 
 @export_category("Reset Ability")
 @export var respawnPoint: Node2D
