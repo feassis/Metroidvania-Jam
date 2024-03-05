@@ -14,5 +14,10 @@ func _process(delta : float):
 	distance_travelled += dist
 	position += direction * dist
 	if max_range < distance_travelled:
-		queue_free()
+		_on_max_range_reached()
+
+func _on_max_range_reached():
+	queue_free()
 	
+func _on_body_entered(body):
+	pass # Replace with function body.

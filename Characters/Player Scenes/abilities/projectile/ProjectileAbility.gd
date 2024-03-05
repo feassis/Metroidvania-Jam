@@ -8,4 +8,4 @@ func _ability(player : Player):
 	# TODO get mouse position instead of facing vector
 	projectile.direction = player.GetFacingVector()
 	projectile.look_at(projectile.global_position + player.GetFacingVector())
-	get_tree().root.add_child(projectile)
+	Helper.add_to_world(projectile)
