@@ -80,15 +80,7 @@ func SetDirection():
 
 func animateWalk(vel: Vector2):
 	if vel == Vector2(0, 0):
-		match currentMovement:
-			MoveDir.Up:
-				animationManager.play("idle up")
-			MoveDir.Down:
-				animationManager.play("idle down")
-			MoveDir.Left:
-				animationManager.play("idle left")
-			MoveDir.Right:
-				animationManager.play("idle right")
+		animationManager.play("idle")
 	else:
 		match currentMovement:
 			MoveDir.Up:
