@@ -107,6 +107,11 @@ layer_1/tile_data = PackedInt32Array(327681, 1441798, 17, 327701, 1572870, 0, 78
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawnPoint", "deathScene", "fullDeathScene") instance=ExtResource("10_ulmfq")]
 position = Vector2(201, 105)
+sprintSpeed = 300.0
+dashVelocity = 500.0
+initialMaxHP = 5
+initialLifeAmount = 3
+devourFrameDelay = 8
 respawnPoint = NodePath("../RespawnPoint")
 deathScene = NodePath("../CanvasLayer/GUI/FullScreenVfx/DeathScreen")
 fullDeathScene = NodePath("../CanvasLayer/GUI/FullScreenVfx/FullDeathScreen")
