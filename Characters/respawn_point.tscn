@@ -21,6 +21,7 @@ animations = [{
 z_index = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 modulate = Color(0.172549, 1, 1, 0.54902)
 scale = Vector2(1.61875, 1.61875)
 sprite_frames = SubResource("SpriteFrames_4tq4r")
