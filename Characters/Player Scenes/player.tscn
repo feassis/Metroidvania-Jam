@@ -1169,7 +1169,6 @@ y_sort_enabled = true
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_0260g")
-speed = 200.0
 animManager = NodePath("AnimatedSprite2D")
 health = NodePath("Health")
 timer = NodePath("Timer")
