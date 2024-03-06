@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://2pvouqx8jny0"]
+[gd_scene load_steps=29 format=3 uid="uid://2pvouqx8jny0"]
 
 [ext_resource type="PackedScene" uid="uid://bkdlhf7oy87qe" path="res://Maps/R0000.tmx" id="1_1jm00"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="2_my584"]
@@ -81,6 +81,10 @@ shader_parameter/u_resolution = Vector2(3, 3)
 shader_parameter/distortion = 1.0
 shader_parameter/dark_value = 0.2
 shader_parameter/opacity = 1.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tv1h1"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-454, -116, -454, -125, -326, -125, -325, -415, -24, -414, -22, -416, -21, -514, 87, -513, 87, -411, 392, -415, 392, -220, 489, -219, 490, -284, 710, -285, 711, -131, 390, -130, 392, 179, 955, 180, 954, 81, 1237, 83, 1236, 180, 1398, 179, 1398, 270, 1239, 271, 1240, 367, 955, 366, 954, 270, 392, 272, 392, 303, 246, 305, 248, 401, 155, 401, 154, 303, -324, 303, -324, 207, -392, 207, -393, 223, -440, 223, -440, 240, -455, 240, -456, 255, -474, 256, -474, 271, -489, 271, -488, 336, -614, 336, -614, 194, -516, 195, -517, 144, -324, 145, -323, -37, -454, -34), PackedVector2Array(-551, 244, -560, 249, -565, 258, -575, 264, -580, 274, -573, 284, -566, 287, -561, 297, -551, 301, -551, 301, -542, 297, -538, 287, -528, 280, -523, 271, -525, 264, -538, 260, -540, 251), PackedVector2Array(-404, 145, -401, 153, -390, 158, -382, 153, -378, 148, -378, 145), PackedVector2Array(-264, -367, -263, -303, -199, -303, -199, -367), PackedVector2Array(-74, -414, -74, -381, -35, -382, -35, -416), PackedVector2Array(100, -415, 100, -383, 111, -383, 111, -374, 130, -374, 130, -384, 136, -384, 136, -416), PackedVector2Array(265, -368, 265, -302, 329, -303, 330, -367), PackedVector2Array(585, -256, 585, -160, 681, -159, 682, -255)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="GameLevel" type="Node2D"]
 
@@ -235,3 +239,6 @@ fullDeathScene = NodePath("../CanvasLayer/GUI/FullScreenVfx/FullDeathScreen")
 
 [node name="RespawnPoint" parent="." instance=ExtResource("12_hfoeb")]
 position = Vector2(13, -8)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_tv1h1")

@@ -289,12 +289,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Golem 1" type="CharacterBody2D" node_paths=PackedStringArray("agent")]
+[node name="Golem 1" type="CharacterBody2D" node_paths=PackedStringArray("agent", "animationManager")]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_vbysw")
 agent = NodePath("NavigationAgent2D")
+animationManager = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
