@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=3 uid="uid://8tjmltbshbhp"]
+[gd_scene load_steps=165 format=3 uid="uid://8tjmltbshbhp"]
 
 [ext_resource type="Script" path="res://Characters/Player Scenes/Player.gd" id="1_0260g"]
 [ext_resource type="Texture2D" uid="uid://ch0pa301bw7ev" path="res://Art/Player Animations/idle.png" id="2_7h83u"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/projectile/ProjectileAbility.gd" id="10_3qyor"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/pulse/PulseAbility.gd" id="11_mf587"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/reset/ResetAbility.gd" id="12_d4f03"]
+[ext_resource type="Script" path="res://Characters/Player Scenes/abilities/bomb/BombAbility.gd" id="12_og31f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjfri"]
 radius = 4.0
@@ -1162,24 +1163,16 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxlvu"]
 size = Vector2(34, 30)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "UpDetection", "DownDetection", "RightDetection", "LeftDetection", "normalAbility", "resetAbility", "pulseAbility", "bombAbility")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "unlockedAbilities")]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_0260g")
-speed = 200.0
 animManager = NodePath("AnimatedSprite2D")
 health = NodePath("Health")
 timer = NodePath("Timer")
-UpDetection = NodePath("Devour Detection/UP")
-DownDetection = NodePath("Devour Detection/Down")
-RightDetection = NodePath("Devour Detection/Right")
-LeftDetection = NodePath("Devour Detection/Left")
-normalAbility = NodePath("Abilities/ProjectileAbility")
-resetAbility = NodePath("Abilities/ResetAbility")
-pulseAbility = NodePath("Abilities/PulseAbility")
-bombAbility = NodePath("Abilities/ProjectileAbility")
+unlockedAbilities = [NodePath("Abilities/BombAbility")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -1207,6 +1200,7 @@ one_shot = true
 [node name="Devour Detection" type="Node2D" parent="."]
 
 [node name="UP" type="Area2D" parent="Devour Detection"]
+unique_name_in_owner = true
 position = Vector2(0, -32)
 script = ExtResource("6_pxm5j")
 
@@ -1255,6 +1249,9 @@ cooldown = 5.0
 [node name="ResetAbility" type="Node" parent="Abilities"]
 script = ExtResource("12_d4f03")
 cooldown = 300.0
+
+[node name="BombAbility" type="Node" parent="Abilities"]
+script = ExtResource("12_og31f")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

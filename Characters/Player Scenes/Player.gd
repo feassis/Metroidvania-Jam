@@ -18,18 +18,8 @@ class_name Player
 @export var devourFrameDelay: int = 8
 @export var timer : Timer
 
-@export_category("Devour Detection")
-@export var UpDetection : DevourDetection
-@export var DownDetection : DevourDetection
-@export var RightDetection : DevourDetection
-@export var LeftDetection : DevourDetection
-
 @export_category("Abilities")
 @export var unlockedAbilities : Array[BaseAbility] = []
-@export var normalAbility : BaseAbility
-@export var resetAbility : BaseAbility
-@export var pulseAbility : BaseAbility
-@export var bombAbility : BaseAbility
 var currentSkillIndex: int = 3
 
 @export_category("Reset Ability")
@@ -38,6 +28,16 @@ var currentSkillIndex: int = 3
 @export_category("DeathScreen")
 @export var deathScene: DeathScreen
 @export var fullDeathScene: DeathScreen
+
+@onready var UpDetection : DevourDetection = %UP
+@onready var DownDetection : DevourDetection = $"Devour Detection/Down"
+@onready var RightDetection : DevourDetection = $"Devour Detection/Right"
+@onready var LeftDetection : DevourDetection = $"Devour Detection/Left"
+
+@onready var normalAbility : BaseAbility = $Abilities/ProjectileAbility
+@onready var resetAbility : BaseAbility = $Abilities/ResetAbility
+@onready var pulseAbility : BaseAbility = $Abilities/PulseAbility
+@onready var bombAbility : BaseAbility = $Abilities/BombAbility
 
 var isDevouring : bool = false
 var isTakingDamage: bool = false
@@ -50,6 +50,8 @@ var devourModeTimer: float = 0
 var currentMovement: MoveDir= MoveDir.Down
 var startPos
 var isDead: bool= false
+
+
 
 
 func _ready():
