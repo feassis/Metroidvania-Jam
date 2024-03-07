@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bkdlhf7oy87qe" path="res://Maps/R0000.tmx" id="1_p6shi"]
 
 [node name="R0000" instance=ExtResource("1_p6shi")]
+
+[node name="Minimap" parent="2 Foreground Layers" index="1"]
+visible = false
