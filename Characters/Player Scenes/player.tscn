@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Characters/Player Scenes/Player.gd" id="1_0260g"]
 [ext_resource type="Texture2D" uid="uid://ch0pa301bw7ev" path="res://Art/Player Animations/idle.png" id="2_7h83u"]
 [ext_resource type="Texture2D" uid="uid://dxhy6t6git66l" path="res://Art/Player Animations/walk.png" id="3_eyd41"]
-[ext_resource type="Script" path="res://Characters/Player Scenes/Health.gd" id="3_xq40h"]
 [ext_resource type="Texture2D" uid="uid://cpfkqa2h4d4f8" path="res://Art/Player Animations/mc_devour.png" id="4_ervkk"]
 [ext_resource type="Texture2D" uid="uid://cgxpbglrtl0wh" path="res://Art/Player Animations/mc_damage.png" id="4_qvkxd"]
 [ext_resource type="Texture2D" uid="uid://f72srgumiaum" path="res://Art/Player Animations/mc_death.png" id="5_g312j"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/DevourDetection.gd" id="6_pxm5j"]
+[ext_resource type="PackedScene" uid="uid://dxx2y1gsf0214" path="res://Characters/health.tscn" id="7_lr1ba"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/projectile/ProjectileAbility.gd" id="10_3qyor"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/pulse/PulseAbility.gd" id="11_mf587"]
 [ext_resource type="Script" path="res://Characters/Player Scenes/abilities/reset/ResetAbility.gd" id="12_d4f03"]
@@ -1170,7 +1170,7 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_0260g")
 animManager = NodePath("AnimatedSprite2D")
-health = NodePath("Health")
+health = NodePath("")
 timer = NodePath("Timer")
 unlockedAbilities = [NodePath("Abilities/BombAbility")]
 
@@ -1184,8 +1184,7 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_3nm1m")
 animation = &"devour right"
 
-[node name="Health" type="Node2D" parent="."]
-script = ExtResource("3_xq40h")
+[node name="Health" parent="." instance=ExtResource("7_lr1ba")]
 
 [node name="InteractableArea" type="Area2D" parent="."]
 

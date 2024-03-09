@@ -1,8 +1,10 @@
-[gd_scene load_steps=109 format=3 uid="uid://3hlhaqtubtig"]
+[gd_scene load_steps=127 format=3 uid="uid://3hlhaqtubtig"]
 
 [ext_resource type="Texture2D" uid="uid://dpun8x0jbqku4" path="res://Characters/enemy/Golems_Attack.png" id="1_qaimw"]
 [ext_resource type="Texture2D" uid="uid://frb36hhprt4c" path="res://Art/Enemies/4golems_idle_walking.png" id="2_e1bmm"]
+[ext_resource type="Texture2D" uid="uid://baut1xk2eynhs" path="res://Art/Enemies/golem_damage.png" id="2_usory"]
 [ext_resource type="Script" path="res://Characters/enemy/Golem 2/Golem2ChargeAttackDetection.gd" id="3_r4omh"]
+[ext_resource type="PackedScene" uid="uid://dxx2y1gsf0214" path="res://Characters/health.tscn" id="4_t5k1g"]
 
 [sub_resource type="GDScript" id="GDScript_gws6d"]
 resource_name = "Golem2"
@@ -34,6 +36,9 @@ func _process(delta):
 			velocity = knockbackDirection * knockbackSpeed
 		
 		move_and_slide()
+		return
+		
+	if isRecievingDamage:
 		return
 		
 	if isChargingAttack:
@@ -133,6 +138,22 @@ func _on_animated_sprite_2d_animation_finished():
 			EndAttack()
 		\"running left\":
 			EndAttack()
+		\"damage right\":
+			isRecievingDamage = false
+			isAttacking = false
+			isChargingAttack = false
+		\"damage left\":
+			isRecievingDamage = false
+			isAttacking = false
+			isChargingAttack = false
+		\"damage up\":
+			isRecievingDamage = false
+			isAttacking = false
+			isChargingAttack = false
+		\"damage down\":
+			isRecievingDamage = false
+			isAttacking = false
+			isChargingAttack = false
 
 func EndAttack():
 	isAttacking = false
@@ -286,6 +307,70 @@ region = Rect2(168, 28, 28, 28)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0s1rp"]
 atlas = ExtResource("1_qaimw")
 region = Rect2(196, 28, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07l1d"]
+atlas = ExtResource("2_usory")
+region = Rect2(0, 116, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgk2v"]
+atlas = ExtResource("2_usory")
+region = Rect2(28, 116, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wds6"]
+atlas = ExtResource("2_usory")
+region = Rect2(56, 116, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyir0"]
+atlas = ExtResource("2_usory")
+region = Rect2(84, 116, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql3qj"]
+atlas = ExtResource("2_usory")
+region = Rect2(0, 174, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf22c"]
+atlas = ExtResource("2_usory")
+region = Rect2(28, 174, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e020j"]
+atlas = ExtResource("2_usory")
+region = Rect2(56, 174, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgtn7"]
+atlas = ExtResource("2_usory")
+region = Rect2(84, 174, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7420k"]
+atlas = ExtResource("2_usory")
+region = Rect2(0, 203, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpgn8"]
+atlas = ExtResource("2_usory")
+region = Rect2(28, 203, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxbvs"]
+atlas = ExtResource("2_usory")
+region = Rect2(56, 203, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16bsc"]
+atlas = ExtResource("2_usory")
+region = Rect2(84, 203, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d620y"]
+atlas = ExtResource("2_usory")
+region = Rect2(0, 145, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c52t"]
+atlas = ExtResource("2_usory")
+region = Rect2(28, 145, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed5m3"]
+atlas = ExtResource("2_usory")
+region = Rect2(56, 145, 28, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7ytf"]
+atlas = ExtResource("2_usory")
+region = Rect2(84, 145, 28, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_irt17"]
 atlas = ExtResource("2_e1bmm")
@@ -679,6 +764,74 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_07l1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgk2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wds6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyir0")
+}],
+"loop": true,
+"name": &"damage down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql3qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf22c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e020j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgtn7")
+}],
+"loop": true,
+"name": &"damage left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7420k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpgn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxbvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16bsc")
+}],
+"loop": true,
+"name": &"damage right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d620y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c52t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed5m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7ytf")
+}],
+"loop": true,
+"name": &"damage up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_irt17")
 }, {
 "duration": 1.0,
@@ -958,7 +1111,7 @@ shape = SubResource("CircleShape2D_fdurp")
 z_index = 3
 position = Vector2(1, -15)
 sprite_frames = SubResource("SpriteFrames_vttvb")
-animation = &"running up"
+animation = &"damage up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
@@ -973,6 +1126,8 @@ script = ExtResource("3_r4omh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Detection/UP"]
 shape = SubResource("RectangleShape2D_h4bha")
+
+[node name="Health" parent="." instance=ExtResource("4_t5k1g")]
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

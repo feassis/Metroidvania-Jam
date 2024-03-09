@@ -51,3 +51,11 @@ func _on_animated_sprite_2d_animation_finished():
 			LeftDetection.Attack(damage)
 		"attack right":
 			RightDetection.Attack(damage)
+		"damage right":
+			isRecievingDamage = false
+		"damage left":
+			isRecievingDamage = false
+		"damage up":
+			isRecievingDamage = false
+		"damage down":
+			isRecievingDamage = false
