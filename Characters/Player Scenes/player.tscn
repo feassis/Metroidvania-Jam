@@ -1236,7 +1236,7 @@ z_index = 2
 [node name="ProjectileAbility" type="Node" parent="Abilities"]
 script = ExtResource("10_3qyor")
 ability_name = "Projectile"
-cooldown = 5.0
+cooldown = 1.0
 
 [node name="PulseAbility" type="Node" parent="Abilities"]
 script = ExtResource("11_mf587")

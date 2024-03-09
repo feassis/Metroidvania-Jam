@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://ca0k546chyga6"]
+[gd_scene load_steps=44 format=3 uid="uid://ca0k546chyga6"]
 
 [ext_resource type="Script" path="res://Characters/enemy/Golem 1/Enemy.gd" id="1_vbysw"]
 [ext_resource type="Texture2D" uid="uid://frb36hhprt4c" path="res://Art/Enemies/4golems_idle_walking.png" id="2_8a3s1"]
+[ext_resource type="PackedScene" uid="uid://woq0ispiwvty" path="res://Characters/Common/Hitbox.tscn" id="3_buehv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80s7a"]
 radius = 6.0
@@ -289,6 +290,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l35b3"]
+radius = 8.0
+height = 28.0
+
 [node name="Golem 1" type="CharacterBody2D" node_paths=PackedStringArray("agent", "animationManager")]
 z_index = 1
 y_sort_enabled = true
@@ -317,6 +322,12 @@ shape = SubResource("CircleShape2D_k0vpg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uwclp")
 animation = &"walk right"
+
+[node name="Hitbox" parent="." instance=ExtResource("3_buehv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, 2)
+shape = SubResource("CapsuleShape2D_l35b3")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -19,5 +19,12 @@ func _process(delta : float):
 func _on_max_range_reached():
 	queue_free()
 	
+func _on_area_entered(area):
+	if (area is HitBox):
+		_on_hitbox_entered(area.entity)
+		
 func _on_body_entered(body):
 	pass # Replace with function body.
+
+func _on_hitbox_entered(entity: Node2D):
+	pass

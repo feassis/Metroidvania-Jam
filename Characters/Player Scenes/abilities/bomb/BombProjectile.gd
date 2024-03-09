@@ -11,6 +11,8 @@ extends BaseProjectile
 @onready var explosion_timer = $ExplosionTimer
 @onready var collision_shape_2d = $CollisionShape2D
 
+const BOMB_EXPLOSION = preload("res://Characters/Player Scenes/abilities/bomb/bomb_explosion.tscn")
+
 const FRICTION = 1000
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,6 +37,9 @@ func _on_body_entered(body):
 	explode()
 
 func explode():
+	var explosion = BOMB_EXPLOSION.instantiate()
+	explosion.global_position = global_position
+	Helper.add_to_world.call_deferred(explosion)
 	queue_free()
 
 func _set_height(new_height):
@@ -47,5 +52,8 @@ func _current_bomb_height() -> float:
 func _on_timer_timeout():
 	explode()
 
+func _on_hitbox_entered(entity: Node2D):
+	explode()
+	
 func _on_max_range_reached():
 	pass

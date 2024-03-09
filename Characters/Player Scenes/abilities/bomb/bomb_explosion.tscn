@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://xiqn23j0ke0r"]
+
+[ext_resource type="Script" path="res://Characters/Player Scenes/abilities/bomb/BombExplosion.gd" id="1_7rh1j"]
+[ext_resource type="Texture2D" uid="uid://5ew3ayt84m0" path="res://Art/Abilities and Attacks/BombExplosion.png" id="2_mjdly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byvii"]
+atlas = ExtResource("2_mjdly")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p77l7"]
+atlas = ExtResource("2_mjdly")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmevo"]
+atlas = ExtResource("2_mjdly")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3fuk"]
+atlas = ExtResource("2_mjdly")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8x7q"]
+atlas = ExtResource("2_mjdly")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a87ml"]
+atlas = ExtResource("2_mjdly")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1m17q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byvii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p77l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmevo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3fuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8x7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a87ml")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxga1"]
+radius = 32.0
+
+[node name="BombExplosion" type="Area2D"]
+z_index = 1
+script = ExtResource("1_7rh1j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1m17q")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vxga1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

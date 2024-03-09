@@ -1,8 +1,9 @@
-[gd_scene load_steps=105 format=3 uid="uid://3hlhaqtubtig"]
+[gd_scene load_steps=107 format=3 uid="uid://3hlhaqtubtig"]
 
 [ext_resource type="Texture2D" uid="uid://cpfkqa2h4d4f8" path="res://Art/Player Animations/mc_devour.png" id="1_xf1va"]
 [ext_resource type="Texture2D" uid="uid://frb36hhprt4c" path="res://Art/Enemies/4golems_idle_walking.png" id="2_e1bmm"]
 [ext_resource type="Script" path="res://Characters/enemy/Golem 2/Golem2ChargeAttackDetection.gd" id="3_r4omh"]
+[ext_resource type="PackedScene" uid="uid://woq0ispiwvty" path="res://Characters/Common/Hitbox.tscn" id="4_sp8sh"]
 
 [sub_resource type="GDScript" id="GDScript_gws6d"]
 resource_name = "Golem2"
@@ -857,6 +858,10 @@ radius = 6.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4bha"]
 size = Vector2(34, 30)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dnwpd"]
+radius = 7.0
+height = 18.0
+
 [node name="Golem 2" type="CharacterBody2D" node_paths=PackedStringArray("UpDetection", "DownDetection", "RightDetection", "LeftDetection", "agent", "animationManager")]
 collision_mask = 7
 script = SubResource("GDScript_gws6d")
@@ -923,6 +928,12 @@ script = ExtResource("3_r4omh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Detection/Left"]
 shape = SubResource("RectangleShape2D_h4bha")
+
+[node name="Hitbox" parent="." instance=ExtResource("4_sp8sh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, -6)
+shape = SubResource("CapsuleShape2D_dnwpd")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

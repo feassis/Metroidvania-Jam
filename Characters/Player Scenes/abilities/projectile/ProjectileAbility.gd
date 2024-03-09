@@ -9,3 +9,6 @@ func _ability(player : Player):
 	projectile.direction = player.GetFacingVector()
 	projectile.look_at(projectile.global_position + player.GetFacingVector())
 	Helper.add_to_world(projectile)
+
+func _on_hitbox_entered(entity: Node2D):
+	pass
