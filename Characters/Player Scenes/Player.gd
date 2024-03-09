@@ -98,7 +98,7 @@ func SubscribeLifeUI(ui : LifeUI):
 	lifeUI.UpdateLife(currentLife)
 
 func GetSpeed() -> float:
-	if Input.is_action_just_pressed("sprint"):
+	if Input.is_action_pressed("sprint"):
 		return sprintSpeed
 	return speed
 

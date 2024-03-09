@@ -6,6 +6,8 @@ class_name Enemy
 @export var avoidanceRange: float = 15
 @export var animationManager: AnimatedSprite2D;
 
+@onready var health: Health = $"Health"
+
 var target: Player = null
 var hasTouchedPlayer:bool = false
 var wasDevoured: bool = false
@@ -15,6 +17,8 @@ var stunTimer: float
 var knockbackDirection: Vector2
 var knockbackTimer: float
 var knockbackSpeed: float
+
+var isRecievingDamage: bool
 
 
 func Knockback(dir: Vector2, speed: float, duration: float):
@@ -41,6 +45,9 @@ func _process(delta):
 			velocity = knockbackDirection * knockbackSpeed
 		
 		move_and_slide()
+		return
+	
+	if isRecievingDamage:
 		return
 	
 	if stunTimer > 0:
@@ -114,10 +121,30 @@ func onContactTarget():
 	
 	hasTouchedPlayer = target.Kill()
 
+func PlayDamageAnim():
+	isRecievingDamage = true
+	match currentMovement:
+			MoveDir.Up:
+				animationManager.play("damage up")
+			MoveDir.Down:
+				animationManager.play("damage down")
+			MoveDir.Left:
+				animationManager.play("damage left")
+			MoveDir.Right:
+				animationManager.play("damage right")
+	
+func PlayDeathAnimation():
+	pass
 
-func GetDevoured():
+func GetDevoured(damage : int):
 	wasDevoured = true
 	Death()
+	
+func GetBombed(damage: int):
+	Death()
+	
+func GetHitedByProjectile(damage:int):
+	pass
 
 func Stun(duration):
 	stunTimer = duration
@@ -147,3 +174,17 @@ func GetFacingVector() -> Vector2:
 
 
 enum MoveDir {Left, Right, Up, Down}
+
+
+func _on_animated_sprite_2d_animation_finished():
+	var animName = animationManager.get_animation()
+	
+	match animName:
+		"damage right":
+			isRecievingDamage = false
+		"damage left":
+			isRecievingDamage = false
+		"damage up":
+			isRecievingDamage = false
+		"damage down":
+			isRecievingDamage = false

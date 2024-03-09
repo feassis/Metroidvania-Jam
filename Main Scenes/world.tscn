@@ -99,6 +99,7 @@ shader_parameter/opacity = 1.0
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(2, 0)
 
 [node name="TileMap" parent="." instance=ExtResource("1_o7rro")]
 position = Vector2(303, 169)
@@ -290,4 +291,4 @@ position = Vector2(304, 31)
 position = Vector2(298, 80)
 
 [node name="Golem 4" parent="." instance=ExtResource("20_5gm6u")]
-position = Vector2(531, 227)
+position = Vector2(516, 206)
