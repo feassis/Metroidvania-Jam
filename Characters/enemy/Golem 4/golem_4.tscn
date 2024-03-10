@@ -1,10 +1,11 @@
-[gd_scene load_steps=99 format=3 uid="uid://dgqyocmhpmlpu"]
+[gd_scene load_steps=108 format=3 uid="uid://dgqyocmhpmlpu"]
 
 [ext_resource type="Script" path="res://Characters/enemy/Golem 4/golem_4.gd" id="1_v2yfr"]
 [ext_resource type="Texture2D" uid="uid://frb36hhprt4c" path="res://Art/Enemies/4golems_idle_walking.png" id="2_aej0w"]
 [ext_resource type="Texture2D" uid="uid://dpbqhkw8t8j0k" path="res://Art/Enemies/Golems_Attack (1).png" id="2_kqft7"]
 [ext_resource type="Texture2D" uid="uid://baut1xk2eynhs" path="res://Art/Enemies/golem_damage.png" id="3_nmv20"]
 [ext_resource type="Script" path="res://Characters/enemy/Golem 4/Golem4AttackDetection.gd" id="4_1kjcq"]
+[ext_resource type="Texture2D" uid="uid://b1gutq5nl7j2p" path="res://Art/Enemies/4golems_idle_walking (1).png" id="5_5cx5b"]
 [ext_resource type="PackedScene" uid="uid://dxx2y1gsf0214" path="res://Characters/health.tscn" id="5_ofxpd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80s7a"]
@@ -235,6 +236,38 @@ region = Rect2(56, 532, 28, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_in5cs"]
 atlas = ExtResource("2_aej0w")
+region = Rect2(84, 532, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1rie"]
+atlas = ExtResource("5_5cx5b")
+region = Rect2(0, 532, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvmcw"]
+atlas = ExtResource("5_5cx5b")
+region = Rect2(28, 532, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpxe6"]
+atlas = ExtResource("5_5cx5b")
+region = Rect2(112, 532, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dym3"]
+atlas = ExtResource("5_5cx5b")
+region = Rect2(140, 532, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw7cd"]
+atlas = ExtResource("5_5cx5b")
+region = Rect2(168, 532, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ybo8"]
+atlas = ExtResource("5_5cx5b")
+region = Rect2(196, 532, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fn4l"]
+atlas = ExtResource("5_5cx5b")
+region = Rect2(56, 532, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh7y3"]
+atlas = ExtResource("5_5cx5b")
 region = Rect2(84, 532, 28, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5v6k"]
@@ -582,6 +615,50 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o1rie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvmcw")
+}],
+"loop": true,
+"name": &"idle down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpxe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dym3")
+}],
+"loop": true,
+"name": &"idle left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hw7cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ybo8")
+}],
+"loop": true,
+"name": &"idle right",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fn4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh7y3")
+}],
+"loop": true,
+"name": &"idle up",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_k5v6k")
 }, {
 "duration": 1.0,
@@ -729,7 +806,7 @@ shape = SubResource("CircleShape2D_k0vpg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -14)
 sprite_frames = SubResource("SpriteFrames_w3t36")
-animation = &"damege left"
+animation = &"idle down"
 
 [node name="UP" type="Area2D" parent="."]
 position = Vector2(0, -6)

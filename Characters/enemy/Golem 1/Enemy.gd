@@ -87,7 +87,15 @@ func SetDirection():
 
 func animateWalk(vel: Vector2):
 	if vel == Vector2(0, 0):
-		animationManager.play("idle")
+		match currentMovement:
+			MoveDir.Up:
+				animationManager.play("idle up")
+			MoveDir.Down:
+				animationManager.play("idle down")
+			MoveDir.Left:
+				animationManager.play("idle left")
+			MoveDir.Right:
+				animationManager.play("idle right")
 	else:
 		match currentMovement:
 			MoveDir.Up:
@@ -134,14 +142,14 @@ func PlayDamageAnim():
 				animationManager.play("damage right")
 	
 func PlayDeathAnimation():
-	pass
+	Death()
 
 func GetDevoured(damage : int):
 	wasDevoured = true
-	Death()
+	PlayDeathAnimation()
 	
 func GetBombed(damage: int):
-	Death()
+	PlayDeathAnimation()
 	
 func GetHitedByProjectile(damage:int):
 	pass
