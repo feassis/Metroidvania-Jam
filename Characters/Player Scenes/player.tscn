@@ -1163,16 +1163,15 @@ height = 24.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxlvu"]
 size = Vector2(34, 30)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer", "unlockedAbilities")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animManager", "health", "timer")]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_0260g")
 animManager = NodePath("AnimatedSprite2D")
-health = NodePath("")
+health = NodePath("Health")
 timer = NodePath("Timer")
-unlockedAbilities = [NodePath("Abilities/BombAbility")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

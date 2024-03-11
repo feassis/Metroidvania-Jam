@@ -77,6 +77,15 @@ func _process(delta):
 	move_and_slide()
 	
 	
+func GetDevoured(damage : int):
+	health.TakeDamage(damage)
+	
+func GetBombed(damage: int):
+	health.TakeDamage(damage)
+	
+func GetHitedByProjectile(damage:int):
+	health.TakeDamage(damage)
+	
 func onContactTarget():
 	ChargeAttack()
 	velocity = Vector2(0,0)
