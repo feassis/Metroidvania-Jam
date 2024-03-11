@@ -142,7 +142,16 @@ func PlayDamageAnim():
 				animationManager.play("damage right")
 	
 func PlayDeathAnimation():
-	Death()
+		match currentMovement:
+			MoveDir.Up:
+				animationManager.play("death up")
+			MoveDir.Down:
+				animationManager.play("death down")
+			MoveDir.Left:
+				animationManager.play("death left")
+			MoveDir.Right:
+				animationManager.play("death right")
+	
 
 func GetDevoured(damage : int):
 	wasDevoured = true
@@ -196,3 +205,11 @@ func _on_animated_sprite_2d_animation_finished():
 			isRecievingDamage = false
 		"damage down":
 			isRecievingDamage = false
+		"death right":
+			Death()
+		"death left":
+			Death()
+		"death up":
+			Death()
+		"death down":
+			Death()

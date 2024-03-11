@@ -3,7 +3,9 @@ extends Enemy
 @export var avoidanceDistance: float = 100
 @export var stopDistance:float =  5
 @export var attackCooldown: float = 2
+@export var enemyProjectile: PackedScene
 var attackTimer: float = 0
+var isAttacking : bool = false
 
 
 func _process(delta):
@@ -30,14 +32,19 @@ func _process(delta):
 	if stunTimer > 0:
 		return
 	
-	animateWalk(velocity)
+	if !isAttacking:
+		animateWalk(velocity)
+	else:
+		return
+
 	if wasDevoured:
 		return
 	
 	if target == null:
 		velocity = Vector2(0,0)
 		return
-	
+		
+	Attack()
 	SetDirection()
 		
 	var curLoc = global_transform.origin
@@ -56,8 +63,23 @@ func GetDevoured(damage : int):
 	health.TakeDamage(damage)
 	
 func Attack():
+	if attackTimer > 0: 
+		return
 	
-	pass
+	isAttacking = true
+	
+	PlayAttackAnimation()
+	
+func PlayAttackAnimation():
+	match currentMovement:
+		MoveDir.Up:
+			animationManager.play("attack up")
+		MoveDir.Down:
+			animationManager.play("attack down")
+		MoveDir.Left:
+			animationManager.play("attack left")
+		MoveDir.Right:
+			animationManager.play("attack right")
 	
 func GetBombed(damage: int):
 	health.TakeDamage(damage)
@@ -99,3 +121,54 @@ func setMovementDirection(dir: Vector2):
 			currentMovement = MoveDir.Right
 		else:
 			currentMovement = MoveDir.Left
+		
+
+func GetFacingVector() -> Vector2:
+	match currentMovement:
+		MoveDir.Up:
+			return Vector2(0, -1)
+		MoveDir.Down:
+			return Vector2(0, 1)
+		MoveDir.Left:
+			return Vector2(-1, 0)
+		MoveDir.Right:
+			return Vector2(1, 0)
+	return Vector2(0,0)
+
+func ShootProjectile():
+	attackTimer = attackCooldown
+	isAttacking = false
+	var projectile = enemyProjectile.instantiate()
+	projectile.position = position
+	projectile.direction = target.position - position
+	projectile.look_at(projectile.position + GetFacingVector())
+	get_tree().root.add_child(projectile)
+
+func _on_animated_sprite_2d_animation_finished():
+	var animName = animationManager.get_animation()
+	
+	match animName:
+		"damage right":
+			isRecievingDamage = false
+		"damage left":
+			isRecievingDamage = false
+		"damage up":
+			isRecievingDamage = false
+		"damage down":
+			isRecievingDamage = false
+		"attack up":
+			ShootProjectile()
+		"attack down":
+			ShootProjectile()
+		"attack right":
+			ShootProjectile()
+		"attack left":
+			ShootProjectile()
+		"death right":
+			Death()
+		"death left":
+			Death()
+		"death up":
+			Death()
+		"death down":
+			Death()
