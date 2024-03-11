@@ -36,7 +36,14 @@ func onContactTarget():
 		MoveDir.Right:
 			animationManager.play("attack right")
 	
-
+func GetDevoured(damage : int):
+	pass
+	
+func GetBombed(damage: int):
+	health.TakeDamage(damage)
+	
+func GetHitedByProjectile(damage:int):
+	health.TakeDamage(damage)
 
 func _on_animated_sprite_2d_animation_finished():
 	var animName = animationManager.get_animation()

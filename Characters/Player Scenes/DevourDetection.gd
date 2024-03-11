@@ -15,7 +15,7 @@ func _process(delta):
 
 func Devour(player : Player):
 	for i in len(enemies):
-		enemies[i].GetDevoured()
+		enemies[i].GetDevoured(1)
 	
 	enemies.clear()
 	

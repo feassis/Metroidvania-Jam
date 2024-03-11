@@ -2,9 +2,13 @@ extends Enemy
 
 @export var avoidanceDistance: float = 100
 @export var stopDistance:float =  5
+@export var attackCooldown: float = 2
+var attackTimer: float = 0
 
 
 func _process(delta):
+	if attackTimer > 0:
+		attackTimer -= delta
 	
 	if stunTimer > 0:
 		stunTimer -= delta
@@ -47,6 +51,19 @@ func _process(delta):
 	velocity = newVel
 
 	move_and_slide()
+
+func GetDevoured(damage : int):
+	health.TakeDamage(damage)
+	
+func Attack():
+	
+	pass
+	
+func GetBombed(damage: int):
+	health.TakeDamage(damage)
+	
+func GetHitedByProjectile(damage:int):
+	health.TakeDamage(damage)
 
 func SetDirection():
 	if target.IsOnDevourMode():
