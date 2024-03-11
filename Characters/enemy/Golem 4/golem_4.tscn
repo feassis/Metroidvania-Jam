@@ -596,6 +596,26 @@ animations = [{
 "name": &"damege left",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": false,
+"name": &"death down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"death left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"death right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"death up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sxf1y")
@@ -806,7 +826,7 @@ shape = SubResource("CircleShape2D_k0vpg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -14)
 sprite_frames = SubResource("SpriteFrames_w3t36")
-animation = &"idle down"
+animation = &"death up"
 
 [node name="UP" type="Area2D" parent="."]
 position = Vector2(0, -6)

@@ -164,6 +164,14 @@ func _on_animated_sprite_2d_animation_finished():
 			isRecievingDamage = false
 			isAttacking = false
 			isChargingAttack = false
+		\"death right\":
+			Death()
+		\"death left\":
+			Death()
+		\"death up\":
+			Death()
+		\"death down\":
+			Death()
 
 func EndAttack():
 	isAttacking = false
@@ -872,6 +880,26 @@ animations = [{
 "name": &"damage up",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": false,
+"name": &"death down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"death left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"death right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"death up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_irt17")
@@ -1197,7 +1225,7 @@ shape = SubResource("CircleShape2D_fdurp")
 z_index = 3
 position = Vector2(1, -15)
 sprite_frames = SubResource("SpriteFrames_vttvb")
-animation = &"idle down"
+animation = &"death up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)

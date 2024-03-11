@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://Shaders/Scripts/StaticNoise.gd" id="12_yuwyc"]
 [ext_resource type="PackedScene" uid="uid://iy25kvueey3m" path="res://Characters/Spirit Chieldren/spirit_chieldren_NormalAttack.tscn" id="18_s8acv"]
 [ext_resource type="PackedScene" uid="uid://cbdlaejk02cl2" path="res://Characters/Spirit Chieldren/spirit_chieldren__Bomb.tscn" id="19_efn1i"]
-[ext_resource type="PackedScene" uid="uid://dgqyocmhpmlpu" path="res://Characters/enemy/Golem 4/golem_4.tscn" id="20_5gm6u"]
+[ext_resource type="PackedScene" uid="uid://bwdf412noxppq" path="res://Characters/enemy/Golem 3/golem_3.tscn" id="20_g0ydd"]
 [ext_resource type="PackedScene" uid="uid://dpdellfka4qq2" path="res://Characters/Spirit Chieldren/spirit_chieldren__Pulse.tscn" id="20_gchsp"]
 [ext_resource type="PackedScene" uid="uid://chgloyvghceaq" path="res://Characters/Spirit Chieldren/spirit_chieldren__Reset.tscn" id="21_xa3gh"]
 
@@ -290,5 +290,5 @@ position = Vector2(304, 31)
 [node name="SpiritChieldren - Reset" parent="." instance=ExtResource("21_xa3gh")]
 position = Vector2(298, 80)
 
-[node name="Golem 4" parent="." instance=ExtResource("20_5gm6u")]
-position = Vector2(516, 206)
+[node name="Golem 3" parent="." instance=ExtResource("20_g0ydd")]
+position = Vector2(560, 195)
