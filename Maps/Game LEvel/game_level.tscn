@@ -1,6 +1,5 @@
 [gd_scene load_steps=29 format=3 uid="uid://2pvouqx8jny0"]
 
-[ext_resource type="PackedScene" uid="uid://bkdlhf7oy87qe" path="res://Maps/R0000.tmx" id="1_1jm00"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="2_my584"]
 [ext_resource type="PackedScene" uid="uid://fd12erxypbi6" path="res://UI/Health/healthUI.tscn" id="3_n1siq"]
 [ext_resource type="PackedScene" uid="uid://fuu4wtvork38" path="res://UI/Life/LifeUI.tscn" id="4_yvq40"]
@@ -10,6 +9,7 @@
 [ext_resource type="Shader" path="res://Shaders/StaticNoise.gdshader" id="8_ti7mo"]
 [ext_resource type="Script" path="res://Shaders/Scripts/StaticNoise.gd" id="9_mxsh7"]
 [ext_resource type="Script" path="res://Shaders/Scripts/YouDiedTextLabelController.gd" id="10_jvq52"]
+[ext_resource type="PackedScene" uid="uid://ckw2gwxj0w885" path="res://Maps/Game LEvel/map_r_0000.tscn" id="10_nd2ho"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="11_s65b4"]
 [ext_resource type="PackedScene" uid="uid://jhmgusrj40hq" path="res://Characters/respawn_point.tscn" id="12_hfoeb"]
 
@@ -228,8 +228,7 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 script = ExtResource("10_jvq52")
 
-[node name="R0000" parent="." instance=ExtResource("1_1jm00")]
-position = Vector2(-631, -735)
+[node name="R0000" parent="." instance=ExtResource("10_nd2ho")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawnPoint", "deathScene", "fullDeathScene") instance=ExtResource("11_s65b4")]
 position = Vector2(7, 30)
