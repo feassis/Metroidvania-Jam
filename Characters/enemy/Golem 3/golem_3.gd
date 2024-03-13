@@ -138,11 +138,22 @@ func GetFacingVector() -> Vector2:
 func ShootProjectile():
 	attackTimer = attackCooldown
 	isAttacking = false
-	var projectile = enemyProjectile.instantiate()
+	var projectile = (enemyProjectile.instantiate() as GolemProjectile)
 	projectile.position = position
-	projectile.direction = target.position - position
-	projectile.look_at(projectile.position + GetFacingVector())
-	get_tree().root.add_child(projectile)
+	projectile.Setup(GetTextDirection(), target.position-position)
+	Helper.add_to_world(projectile)
+
+func GetTextDirection() -> String:
+	match currentMovement:
+		MoveDir.Up:
+			return "up"
+		MoveDir.Down:
+			return "down"
+		MoveDir.Left:
+			return "left"
+		MoveDir.Right:
+			return "right"
+	return ""
 
 func _on_animated_sprite_2d_animation_finished():
 	var animName = animationManager.get_animation()
