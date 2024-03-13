@@ -22,6 +22,9 @@ func _on_area_2d_body_entered(body):
 		(body as Enemy).Stun(stunDuration)
 		(body as Enemy).Knockback((body.position - position).normalized(), 
 		knockbackSpeed, knockbackDuration)
-	##Destroy Projectile stuff##
+	
+	
+	if body is GolemProjectile:
+		body.queue_free()
 
 
