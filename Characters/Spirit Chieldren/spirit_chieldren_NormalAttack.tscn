@@ -1,10 +1,20 @@
-[gd_scene load_steps=21 format=3 uid="uid://iy25kvueey3m"]
+[gd_scene load_steps=23 format=3 uid="uid://iy25kvueey3m"]
 
 [ext_resource type="Script" path="res://Characters/Spirit Chieldren/spirit_chieldren___base.gd" id="1_eag16"]
+[ext_resource type="Shader" path="res://Shaders/Glow.gdshader" id="1_t38wh"]
 [ext_resource type="Texture2D" uid="uid://dar52x82v2b7d" path="res://Art/Spirit Chieldren/spitit_children_idle.png" id="2_t8qri"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hp8io"]
 radius = 9.84886
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wop3r"]
+shader = ExtResource("1_t38wh")
+shader_parameter/color1 = Color(1, 1, 0.129412, 1)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/threshold = 1.0
+shader_parameter/intensity = 2.0
+shader_parameter/opacity = 0.2
+shader_parameter/glow_color = Color(0.890196, 0.917647, 0.137255, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kh2qa"]
 atlas = ExtResource("2_t8qri")
@@ -153,6 +163,7 @@ shape = SubResource("CircleShape2D_hp8io")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_wop3r")
 sprite_frames = SubResource("SpriteFrames_6ehr7")
 animation = &"idle down"
 
