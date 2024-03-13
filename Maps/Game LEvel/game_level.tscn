@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://2pvouqx8jny0"]
+[gd_scene load_steps=37 format=3 uid="uid://2pvouqx8jny0"]
 
 [ext_resource type="PackedScene" uid="uid://bkdlhf7oy87qe" path="res://Maps/R0000.tmx" id="1_1jm00"]
 [ext_resource type="Script" path="res://UI/GUI/GUI.gd" id="2_my584"]
@@ -12,6 +12,14 @@
 [ext_resource type="Script" path="res://Shaders/Scripts/YouDiedTextLabelController.gd" id="10_jvq52"]
 [ext_resource type="PackedScene" uid="uid://8tjmltbshbhp" path="res://Characters/Player Scenes/player.tscn" id="11_s65b4"]
 [ext_resource type="PackedScene" uid="uid://jhmgusrj40hq" path="res://Characters/respawn_point.tscn" id="12_hfoeb"]
+[ext_resource type="PackedScene" uid="uid://ca0k546chyga6" path="res://Characters/enemy/Golem 1/golem_1.tscn" id="13_q13kl"]
+[ext_resource type="PackedScene" uid="uid://iy25kvueey3m" path="res://Characters/Spirit Chieldren/spirit_chieldren_NormalAttack.tscn" id="14_nb8bt"]
+[ext_resource type="PackedScene" uid="uid://3hlhaqtubtig" path="res://Characters/enemy/Golem 2/golem_2.tscn" id="15_vg5wq"]
+[ext_resource type="PackedScene" uid="uid://dpdellfka4qq2" path="res://Characters/Spirit Chieldren/spirit_chieldren__Pulse.tscn" id="16_1v4do"]
+[ext_resource type="PackedScene" uid="uid://chgloyvghceaq" path="res://Characters/Spirit Chieldren/spirit_chieldren__Reset.tscn" id="17_36h0a"]
+[ext_resource type="PackedScene" uid="uid://cbdlaejk02cl2" path="res://Characters/Spirit Chieldren/spirit_chieldren__Bomb.tscn" id="18_xuq1p"]
+[ext_resource type="PackedScene" uid="uid://bwdf412noxppq" path="res://Characters/enemy/Golem 3/golem_3.tscn" id="19_bspws"]
+[ext_resource type="PackedScene" uid="uid://dgqyocmhpmlpu" path="res://Characters/enemy/Golem 4/golem_4.tscn" id="20_gsivl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1iuif"]
 shader = ExtResource("6_8idqp")
@@ -244,3 +252,110 @@ position = Vector2(13, -8)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_kr0dv")
+
+[node name="Golems 1" type="Node2D" parent="."]
+
+[node name="Golem 1" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(-950, -936)
+
+[node name="Golem 2" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(-1065, -738)
+
+[node name="Golem 3" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(-1217, -1016)
+
+[node name="Golem 4" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(-689, -535)
+
+[node name="Golem 5" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(98, -941)
+
+[node name="Golem 6" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(-404, -994)
+
+[node name="Golem 7" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(-359, -1483)
+
+[node name="Golem 8" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(-131, -1694)
+
+[node name="Golem 9" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(-7, -95)
+
+[node name="Golem 10" parent="Golems 1" instance=ExtResource("13_q13kl")]
+position = Vector2(1485, 130)
+
+[node name="SpiritChieldren - NormalAttack" parent="." instance=ExtResource("14_nb8bt")]
+position = Vector2(-1716, -623)
+
+[node name="Golems 2" type="Node2D" parent="."]
+
+[node name="Golem 2" parent="Golems 2" instance=ExtResource("15_vg5wq")]
+position = Vector2(-461, -1775)
+
+[node name="Golem 3" parent="Golems 2" instance=ExtResource("15_vg5wq")]
+position = Vector2(82, -1817)
+
+[node name="Golem 4" parent="Golems 2" instance=ExtResource("15_vg5wq")]
+position = Vector2(118, -1482)
+
+[node name="Golem 5" parent="Golems 2" instance=ExtResource("15_vg5wq")]
+position = Vector2(1468, -1665)
+
+[node name="Golem 6" parent="Golems 2" instance=ExtResource("15_vg5wq")]
+position = Vector2(669, -1801)
+
+[node name="Golem 7" parent="Golems 2" instance=ExtResource("15_vg5wq")]
+position = Vector2(657, -1728)
+
+[node name="SpiritChieldren - ulse" parent="." instance=ExtResource("16_1v4do")]
+position = Vector2(1435, -1811)
+
+[node name="SpiritChieldren - Reset" parent="." instance=ExtResource("17_36h0a")]
+position = Vector2(919, -79)
+
+[node name="SpiritChieldren - Bomb" parent="." instance=ExtResource("18_xuq1p")]
+position = Vector2(494, 857)
+
+[node name="Golems 3" type="Node2D" parent="."]
+
+[node name="Golem 3" parent="Golems 3" instance=ExtResource("19_bspws")]
+position = Vector2(-313, -53)
+
+[node name="Golem 4" parent="Golems 3" instance=ExtResource("19_bspws")]
+position = Vector2(87, 142)
+
+[node name="Golem 5" parent="Golems 3" instance=ExtResource("19_bspws")]
+position = Vector2(555, 532)
+
+[node name="Golem 6" parent="Golems 3" instance=ExtResource("19_bspws")]
+position = Vector2(1082, 793)
+
+[node name="Golem 7" parent="Golems 3" instance=ExtResource("19_bspws")]
+position = Vector2(1077, 299)
+
+[node name="Golem 8" parent="Golems 3" instance=ExtResource("19_bspws")]
+position = Vector2(1492, 427)
+
+[node name="Golem 9" parent="Golems 3" instance=ExtResource("19_bspws")]
+position = Vector2(1730, -82)
+
+[node name="Golems 4" type="Node2D" parent="."]
+
+[node name="Golem 4" parent="Golems 4" instance=ExtResource("20_gsivl")]
+position = Vector2(1900, -491)
+
+[node name="Golem 5" parent="Golems 4" instance=ExtResource("20_gsivl")]
+position = Vector2(1460, -1065)
+
+[node name="Golem 6" parent="Golems 4" instance=ExtResource("20_gsivl")]
+position = Vector2(1480, -463)
+
+[node name="Golem 7" parent="Golems 4" instance=ExtResource("20_gsivl")]
+position = Vector2(-314, -487)
+
+[node name="Golem 8" parent="Golems 4" instance=ExtResource("20_gsivl")]
+position = Vector2(888, -487)
+
+[node name="Golem 9" parent="Golems 4" instance=ExtResource("20_gsivl")]
+position = Vector2(-182, -1839)

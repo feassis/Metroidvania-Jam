@@ -196,7 +196,7 @@ func Attack():
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdurp"]
-radius = 328.123
+radius = 201.01
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmje1"]
 atlas = ExtResource("1_qaimw")

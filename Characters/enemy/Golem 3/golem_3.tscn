@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b1gutq5nl7j2p" path="res://Art/Enemies/4golems_idle_walking (1).png" id="5_7gr7v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdurp"]
-radius = 328.123
+radius = 219.146
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65toa"]
 atlas = ExtResource("2_gbyvp")
